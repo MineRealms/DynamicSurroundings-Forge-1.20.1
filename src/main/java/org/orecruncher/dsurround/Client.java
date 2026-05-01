@@ -25,6 +25,7 @@ import org.orecruncher.dsurround.lib.version.VersionResult;
 import org.orecruncher.dsurround.processing.Handlers;
 import org.orecruncher.dsurround.runtime.ConditionEvaluator;
 import org.orecruncher.dsurround.runtime.IConditionEvaluator;
+import org.orecruncher.dsurround.shader.ShaderManager;
 import org.orecruncher.dsurround.sound.IAudioPlayer;
 import org.orecruncher.dsurround.sound.MinecraftAudioPlayer;
 import org.orecruncher.dsurround.weather.Weather;
@@ -164,6 +165,9 @@ public final class Client {
 
         // Initialize the entity effects system
         EntityEffectsManager.getInstance();
+
+        // Initialize shader system
+        ShaderManager.initialize();
 
         this.logger.info("[%s] Finalization complete", Constants.MOD_ID);
     }
