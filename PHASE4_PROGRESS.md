@@ -1,6 +1,6 @@
 # Phase 4: Weather Effects System - Progress Report
 
-## Status: In Progress (30% Complete)
+## Status: In Progress (35% Complete)
 
 ### Completed Components ✅
 
@@ -48,14 +48,22 @@
 - Weather system unregistered on disconnect
 - Configuration registered in DI container
 
+#### 4. Weather Fog Effects
+- **WeatherFogHandler.java** - Forge event-based fog handler
+  - Subscribes to ViewportEvent.RenderFog
+  - Modifies fog near/far plane distances based on weather intensity
+  - Uses configurable fog reduction factors from config
+  - Respects enableWeatherFog config option
+  - Integrated into ForgeServiceImpl event bus
+
 ### Code Statistics (Current)
-- **New Files**: 4
-- **Lines of Code**: ~600
+- **New Files**: 5
+- **Lines of Code**: ~700
 - **Build Status**: ✅ SUCCESS
 
 ---
 
-## Remaining Work (70%)
+## Remaining Work (65%)
 
 ### High Priority
 
@@ -87,9 +95,10 @@
 - [ ] Network synchronization
 
 #### 5. Weather Fog
-- [ ] WeatherFogRangeCalculator.java - Fog density calculation
-- [ ] Intensity-based fog modulation
-- [ ] Smooth fog transitions
+- [x] WeatherFogHandler.java - Fog density calculation
+- [x] Intensity-based fog modulation
+- [x] Configurable fog reduction factors
+- [x] Forge event integration
 
 ### Medium Priority
 
@@ -164,7 +173,7 @@
 
 ## Next Steps
 
-1. Implement weather fog effects (simple, no rendering dependencies)
+1. ~~Implement weather fog effects~~ ✅ DONE
 2. Copy texture assets from 1.12.2
 3. Implement weather particle systems
 4. Implement weather rendering system
@@ -177,7 +186,7 @@
 
 ## Estimated Completion
 
-- **Current Progress**: 30%
+- **Current Progress**: 35%
 - **Remaining Work**: ~1,500 lines of code
 - **Estimated Time**: 2-3 hours of focused work
 - **Complexity**: High (rendering, particles, networking)
@@ -192,8 +201,13 @@
 - Configuration options
 - Client integration
 
+**Next Commit**: Phase 4 Part 2 - Weather fog effects
+- WeatherFogHandler.java with Forge event integration
+- Configurable fog reduction based on weather intensity
+- Integrated into ForgeServiceImpl
+
 **Future Commits**:
-- Part 2: Weather fog and texture assets
+- Part 3: Texture assets
 - Part 3: Weather particles and splash effects
 - Part 4: Weather rendering system
 - Part 5: Thunder, lightning, and networking
