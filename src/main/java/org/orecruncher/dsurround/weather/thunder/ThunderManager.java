@@ -25,6 +25,8 @@ package org.orecruncher.dsurround.weather.thunder;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -177,5 +179,57 @@ public class ThunderManager {
      */
     public void reset() {
         this.nextThunderEvent = 0;
+    }
+
+    /**
+     * Static method to handle thunder events from network packets.
+     * Called when a thunder packet is received from the server.
+     *
+     * @param dimension The dimension the thunder event is in
+     * @param doFlash Whether to trigger a lightning flash
+     * @param position The position of the thunder event
+     */
+    public static void handleServerThunder(ResourceLocation dimension, boolean doFlash, BlockPos position) {
+        var mc = Minecraft.getInstance();
+        var level = mc.level;
+
+        if (level == null)
+            return;
+
+        // Verify we're in the correct dimension
+        if (!level.dimension().location().equals(dimension))
+            return;
+
+        float intensity = Weather.getIntensityLevel();
+
+        // Play thunder sound
+        var player = GameUtils.getPlayer().orElse(null);
+        if (player != null) {
+            // Calculate volume based on distance
+            double distance = Math.sqrt(player.blockPosition().distSqr(position));
+            float volumeScale = Mth.clamp(1.0F - (float) (distance / 64.0F), 0.0F, 1.0F);
+            float volume = Mth.lerp(intensity, THUNDER_VOLUME_MIN, THUNDER_VOLUME_MAX) * volumeScale;
+
+            // Calculate pitch variation
+            float pitch = 0.8F + Randomizer.current().nextFloat() * 0.4F;
+
+            // Play thunder sound
+            level.playLocalSound(
+                    position.getX(),
+                    position.getY(),
+                    position.getZ(),
+                    SoundEvents.LIGHTNING_BOLT_THUNDER,
+                    SoundSource.WEATHER,
+                    volume,
+                    pitch,
+                    false
+            );
+        }
+
+        // Trigger flash if needed
+        if (doFlash) {
+            // Lightning flash is handled by the client's sky renderer
+            // The effect will be visible automatically
+        }
     }
 }

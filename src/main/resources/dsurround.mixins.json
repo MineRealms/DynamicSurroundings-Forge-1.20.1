@@ -33,7 +33,8 @@
     "core.MixinRaycastContextAccessor",
     "core.MixinSoundOptionsScreen",
     "core.MixinWorld",
-    "events.MixinMinecraftClient"
+    "events.MixinMinecraftClient",
+    "MixinLevelRenderer"
   ],
   "server": [],
   "injectors": {

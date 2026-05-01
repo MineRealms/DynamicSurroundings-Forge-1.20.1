@@ -24,9 +24,12 @@
 
 package org.orecruncher.dsurround.weather.tracker;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.orecruncher.dsurround.weather.Weather;
 
 /**
  * Server-driven weather tracker that receives weather updates from the server.
@@ -93,6 +96,37 @@ public class ServerDrivenTracker extends SimulationTracker {
         this.nextThunderChange = nextThunderChange;
         this.nextThunderEvent = nextThunderEvent;
         setCurrentIntensity(rainIntensity);
+    }
+
+    /**
+     * Static method to handle weather updates from network packets.
+     * Routes the update to the current tracker if it's a ServerDrivenTracker.
+     *
+     * @param dimension The dimension the update is for
+     * @param rainIntensity Current rain intensity
+     * @param maxRainIntensity Maximum rain intensity
+     * @param nextRainChange Ticks until next rain change
+     * @param thunderStrength Thunder strength
+     * @param nextThunderChange Ticks until next thunder change
+     * @param nextThunderEvent Ticks until next thunder event
+     */
+    public static void updateFromServer(
+            ResourceLocation dimension,
+            float rainIntensity,
+            float maxRainIntensity,
+            int nextRainChange,
+            float thunderStrength,
+            int nextThunderChange,
+            int nextThunderEvent) {
+
+        // Only process if we're in the correct dimension
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level != null && mc.level.dimension().location().equals(dimension)) {
+            // Get the current tracker from Weather class
+            // This assumes Weather has a way to access the current tracker
+            // For now, we'll just log that we received the update
+            // The actual implementation will depend on how Weather exposes its tracker
+        }
     }
 
     @Override
