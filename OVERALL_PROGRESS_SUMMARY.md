@@ -69,37 +69,56 @@
 - **修改文件**: 1 个（Client.java）
 
 ### Git 提交
-- 待提交: Phase 3 complete
+- Commit [已提交]: Phase 3 complete
 
-### 实现内容
-- ✅ 核心架构（7 个基础类）
-- ✅ 蒸汽喷射效果（岩浆遇水）
-- ✅ 火焰喷射效果（热方块上方）
-- ✅ 瀑布效果（流动水 + 声音）
-- ✅ 气泡喷射（气泡柱）
-- ✅ 萤火虫（夜间发光粒子）
-- ✅ 尘埃喷射（下落粒子）
-- ✅ 喷泉喷射（向上喷射）
+---
+
+## 🔄 Phase 4: 天气效果系统 (40% 完成)
+
+### 已完成 ✅
+- ✅ 核心天气状态管理（Weather.java, Tracker 系统）
+  - 9 级强度系统（NONE 到 TORRENTIAL）
+  - 客户端模拟追踪器（SimulationTracker）
+  - 服务器驱动追踪器（ServerDrivenTracker）
+- ✅ 配置系统（WeatherEffects 配置类）
+  - 11 个配置选项（雾、雨、雷电、强度范围等）
+- ✅ 天气雾效果（WeatherFogHandler）
+  - 基于强度的雾密度调整
+  - Forge ViewportEvent.RenderFog 集成
+- ✅ 天气纹理资源（24 个 PNG 文件）
+  - 8 个雨纹理（calm 到 torrential）
+  - 8 个雪纹理（calm 到 torrential）
+  - 8 个沙尘纹理（calm 到 torrential）
+
+### 进行中 🔄
+- ⏳ 天气粒子系统（复杂，需要大量渲染代码）
+- ⏳ 天气渲染系统（StormRenderer 移植）
+
+### 待实现 📋
+- ⏳ 雷电效果系统（ThunderEvent, 音效, 闪光）
+- ⏳ 服务器端天气生成器（多人同步）
+- ⏳ 网络同步（PacketThunder, WeatherUpdate）
 
 ### 代码统计
-- **新增代码**: ~1,200 行
-- **新增类**: 14 个
+- **新增代码**: ~700 行
+- **新增类**: 5 个
+- **纹理资源**: 24 个 PNG
 - **修改文件**: 2 个
 
 ### Git 提交
-- Commit 085f19e: Phase 2 core architecture
-- Commit 20058db: Phase 2 compilation fixes
-- Commit 478a8da: Phase 2 additional effects (dust, fountain, firefly)
+- Commit 7637a1a: Phase 4 Part 3 - Weather texture assets
+- Commit 9715e36: Phase 4 Part 2 - Weather fog effects
+- Commit [前一个]: Phase 4 Part 1 - Core weather state management
 
 ---
 
 ## 📊 总体统计
 
 ### 代码量
-- **总新增代码**: ~5,100 行
-- **总新增类**: 42 个
+- **总新增代码**: ~5,200 行
+- **总新增类**: 47 个
 - **总 Mixin**: 1 个
-- **总资源文件**: 3 个 JSON + 1 个 README
+- **总资源文件**: 3 个 JSON + 1 个 README + 24 个纹理
 - **总文档**: 3,500+ 行
 
 ### Git 历史
