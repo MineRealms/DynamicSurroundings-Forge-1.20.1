@@ -83,7 +83,6 @@ public class AuroraClassic extends AuroraBase {
                 com.mojang.blaze3d.platform.GlStateManager.SourceFactor.ONE,
                 com.mojang.blaze3d.platform.GlStateManager.DestFactor.ZERO
         );
-        RenderSystem.disableTexture();
         RenderSystem.disableCull();
         RenderSystem.depthMask(false);
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
@@ -107,7 +106,7 @@ public class AuroraClassic extends AuroraBase {
 
             Matrix4f matrix = poseStack.last().pose();
 
-            buffer.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormats.POSITION_COLOR);
+            buffer.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
             for (int i = 0; i < nodes.length - 1; i++) {
                 Panel node = nodes[i];
@@ -176,7 +175,6 @@ public class AuroraClassic extends AuroraBase {
         // Restore render state
         RenderSystem.depthMask(true);
         RenderSystem.enableCull();
-        RenderSystem.enableTexture();
         RenderSystem.defaultBlendFunc();
         RenderSystem.disableBlend();
     }

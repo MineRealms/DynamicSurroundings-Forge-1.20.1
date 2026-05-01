@@ -34,6 +34,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import org.orecruncher.dsurround.lib.logging.IModLog;
+import org.orecruncher.dsurround.lib.Library;
 import org.orecruncher.dsurround.Constants;
 
 import java.io.IOException;
@@ -47,7 +48,7 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 public class ShaderManager {
 
-    private static final IModLog LOGGER = Constants.LOG;
+    private static final IModLog LOGGER = Library.LOGGER;
     private static final Map<String, ShaderProgram> SHADERS = new HashMap<>();
 
     /**
@@ -116,7 +117,7 @@ public class ShaderManager {
             return RenderSystem.isOnRenderThread() &&
                    GlStateManager._getInteger(0x8B8D) > 0; // GL_SHADING_LANGUAGE_VERSION
         } catch (Exception e) {
-            LOGGER.warn(e, "Failed to check shader support");
+            LOGGER.error(e, "Failed to check shader support");
             return false;
         }
     }

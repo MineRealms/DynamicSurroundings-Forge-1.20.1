@@ -26,6 +26,7 @@ package org.orecruncher.dsurround.weather.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,7 +62,7 @@ public class WeatherRenderHandler {
             return;
         }
 
-        ClientLevel level = (ClientLevel) event.getLevel();
+        ClientLevel level = Minecraft.getInstance().level;
         if (level == null) {
             return;
         }

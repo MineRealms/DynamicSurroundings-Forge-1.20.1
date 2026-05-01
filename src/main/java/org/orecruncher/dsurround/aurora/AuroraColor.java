@@ -26,7 +26,7 @@ package org.orecruncher.dsurround.aurora;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.orecruncher.dsurround.lib.random.Randomizer;
+import org.orecruncher.dsurround.lib.random.IRandomizer;
 
 /**
  * Predefined color sets for aurora effects.
@@ -119,7 +119,7 @@ public enum AuroraColor {
      * @param random The randomizer to use
      * @return A random aurora color preset
      */
-    public static AuroraColor random(Randomizer random) {
+    public static AuroraColor random(IRandomizer random) {
         AuroraColor[] values = values();
         return values[random.nextInt(values.length)];
     }

@@ -31,6 +31,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.orecruncher.dsurround.lib.random.IRandomizer;
 import org.orecruncher.dsurround.lib.random.Randomizer;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public abstract class AuroraBase implements IAurora {
     protected static final float ANGLE = Mth.PI / 2.0F;
 
     protected final long seed;
-    protected final Randomizer random;
+    protected final IRandomizer random;
     protected final AuroraLifeTracker tracker;
     protected final AuroraColor preset;
 
@@ -71,7 +72,8 @@ public abstract class AuroraBase implements IAurora {
      */
     protected AuroraBase(long seed) {
         this.seed = seed;
-        this.random = new Randomizer(seed);
+        this.random = Randomizer.current();
+        this.random.setSeed(seed);
         this.tracker = new AuroraLifeTracker(AuroraUtils.AURORA_PEAK_AGE, AuroraUtils.AURORA_AGE_RATE);
         this.preset = AuroraColor.random(this.random);
 

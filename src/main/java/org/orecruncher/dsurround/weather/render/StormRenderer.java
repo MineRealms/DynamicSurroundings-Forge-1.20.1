@@ -35,13 +35,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Matrix4f;
-import org.orecruncher.dsurround.lib.seasons.ISeasonalInformation;
-import org.orecruncher.dsurround.lib.seasons.SeasonManager;
+import org.orecruncher.dsurround.capabilities.CapabilityHandler;
+import org.orecruncher.dsurround.capabilities.season.ISeasonInfo;
+import org.orecruncher.dsurround.capabilities.season.PrecipitationType;
 import org.orecruncher.dsurround.weather.Weather;
 
 /**
@@ -114,7 +116,7 @@ public class StormRenderer {
 
         // Get current weather properties
         Weather.Properties weatherProps = Weather.getWeatherProperties();
-        ISeasonalInformation seasonInfo = SeasonManager.getSeasonalInformation(level);
+        ISeasonInfo seasonInfo = CapabilityHandler.getSeasonInfo(level);
 
         // Render weather particles in a grid around the player
         int renderCount = ticks;
@@ -151,9 +153,13 @@ public class StormRenderer {
                 Biome biome = level.getBiome(mutablePos).value();
 
                 // Determine precipitation type from season info
-                Biome.Precipitation precipitation = seasonInfo.getPrecipitationType(mutablePos, biome);
+                if (seasonInfo == null) {
+                    continue;
+                }
 
-                if (precipitation == Biome.Precipitation.NONE) {
+                PrecipitationType precipitation = seasonInfo.getPrecipitationType(mutablePos);
+
+                if (precipitation == PrecipitationType.NONE) {
                     continue;
                 }
 
@@ -164,7 +170,9 @@ public class StormRenderer {
 
                 // Get lighting for this position
                 mutablePos.set(gridX, Math.max(precipHeight, playerY), gridZ);
-                int packedLight = level.getBrightness(LightTexture.BLOCK, mutablePos);
+                int blockLight = level.getBrightness(LightLayer.BLOCK, mutablePos);
+                int skyLight = level.getBrightness(LightLayer.SKY, mutablePos);
+                int packedLight = LightTexture.pack(blockLight, skyLight);
 
                 // Seed random for consistent particle generation
                 int seed = (gridZ << 16) ^ gridX;
@@ -176,7 +184,7 @@ public class StormRenderer {
                 double texOffsetU, texOffsetV;
                 float alpha;
 
-                if (precipitation == Biome.Precipitation.RAIN) {
+                if (precipitation == PrecipitationType.RAIN) {
                     texture = weatherProps.getRainTexture();
 
                     // Rain animation - vertical scrolling
@@ -186,7 +194,7 @@ public class StormRenderer {
 
                     alpha = ((1.0F - distanceFactor * distanceFactor) * 0.5F + 0.5F) * alphaRatio;
 
-                } else if (precipitation == Biome.Precipitation.SNOW) {
+                } else if (precipitation == PrecipitationType.SNOW) {
                     texture = weatherProps.getSnowTexture();
 
                     // Snow animation - gentle drift
@@ -220,7 +228,7 @@ public class StormRenderer {
                     RenderSystem.setShader(GameRenderer::getParticleShader);
                     RenderSystem.setShaderTexture(0, texture);
 
-                    bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormats.PARTICLE);
+                    bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
                     currentTexture = texture;
                     isBuilding = true;
                 }

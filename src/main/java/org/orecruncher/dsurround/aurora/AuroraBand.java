@@ -27,7 +27,7 @@ package org.orecruncher.dsurround.aurora;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.orecruncher.dsurround.lib.random.Randomizer;
+import org.orecruncher.dsurround.lib.random.IRandomizer;
 
 /**
  * Represents a band of aurora panels that form a wave-like structure.
@@ -40,13 +40,13 @@ public class AuroraBand {
     private static final float WAVE_AMPLITUDE = 10.0F;
     private static final float WAVE_FREQUENCY = 0.1F;
 
-    private final Randomizer random;
+    private final IRandomizer random;
     private final Panel[] nodes;
     private final float[] waveTracker;
 
     private float offset = 0.0F;
 
-    public AuroraBand(Randomizer random) {
+    public AuroraBand(IRandomizer random) {
         this.random = random;
         this.nodes = new Panel[NODE_COUNT];
         this.waveTracker = new float[NODE_COUNT];

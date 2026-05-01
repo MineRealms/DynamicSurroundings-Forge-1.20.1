@@ -37,6 +37,7 @@ import org.joml.Vector4f;
 import org.lwjgl.opengl.GL20;
 import org.orecruncher.dsurround.Constants;
 import org.orecruncher.dsurround.lib.logging.IModLog;
+import org.orecruncher.dsurround.lib.Library;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,7 +54,7 @@ import java.util.stream.Collectors;
 @OnlyIn(Dist.CLIENT)
 public class ShaderProgram implements AutoCloseable {
 
-    private static final IModLog LOGGER = Constants.LOG;
+    private static final IModLog LOGGER = Library.LOGGER;
 
     private final String name;
     private final ResourceLocation vertexShaderLocation;

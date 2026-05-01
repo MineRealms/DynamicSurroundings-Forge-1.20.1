@@ -40,7 +40,7 @@ import java.util.List;
  */
 public class WeatherGenerator {
 
-    private static final IModLog LOGGER = new ModLog(WeatherGenerator.class);
+    private static final IModLog LOGGER = new ModLog("WeatherGenerator");
 
     protected final RandomSource random;
     protected final ServerLevel level;

@@ -28,6 +28,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.orecruncher.dsurround.lib.random.IRandomizer;
 import org.orecruncher.dsurround.lib.random.Randomizer;
 
 import javax.annotation.Nonnull;
@@ -39,7 +40,7 @@ import javax.annotation.Nonnull;
 @OnlyIn(Dist.CLIENT)
 public abstract class EffectHandlerBase {
 
-    protected final Randomizer random = Randomizer.current();
+    protected final IRandomizer random = Randomizer.current();
     private final String handlerName;
 
     protected EffectHandlerBase(@Nonnull String name) {

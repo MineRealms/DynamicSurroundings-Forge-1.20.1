@@ -1,6 +1,6 @@
 package org.orecruncher.dsurround;
 
-import org.orecruncher.dsurround.lib.config.ConfigProcessor;
+import org.orecruncher.dsurround.lib.config.ConfigurationData;
 
 /**
  * Static accessor for configuration values.
@@ -33,7 +33,7 @@ public final class Config {
      * Must be called during mod initialization.
      */
     public static void initialize() {
-        configuration = ConfigProcessor.load(Configuration.class);
+        configuration = ConfigurationData.getConfig(Configuration.class);
         refresh();
     }
 

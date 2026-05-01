@@ -49,7 +49,7 @@ import java.util.Map;
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WeatherGeneratorManager {
 
-    private static final IModLog LOGGER = new ModLog(WeatherGeneratorManager.class);
+    private static final IModLog LOGGER = new ModLog("WeatherGeneratorManager");
 
     // Map of dimension -> weather generator
     private static final Map<ResourceKey<Level>, WeatherGenerator> generators = new HashMap<>();
@@ -152,9 +152,9 @@ public class WeatherGeneratorManager {
                 level.dimension().location(),
                 data.getCurrentRainIntensity(),
                 data.getRainIntensity(),
-                level.getLevelData().getRainTime(),
+                (int) (level.getRainLevel(1.0F) * 100),  // Convert float to int (0-100 scale)
                 level.getThunderLevel(1.0F),
-                level.getLevelData().getThunderTime(),
+                (int) (level.getThunderLevel(1.0F) * 100),  // Convert float to int (0-100 scale)
                 data.getThunderTimer()
         );
 

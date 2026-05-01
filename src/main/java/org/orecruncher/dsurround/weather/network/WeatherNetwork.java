@@ -43,7 +43,7 @@ import org.orecruncher.dsurround.lib.logging.ModLog;
  */
 public class WeatherNetwork {
 
-    private static final IModLog LOGGER = new ModLog(WeatherNetwork.class);
+    private static final IModLog LOGGER = new ModLog("WeatherNetwork");
 
     private static final String PROTOCOL_VERSION = "1";
     private static final ResourceLocation CHANNEL_NAME = new ResourceLocation(Constants.MOD_ID, "weather");
