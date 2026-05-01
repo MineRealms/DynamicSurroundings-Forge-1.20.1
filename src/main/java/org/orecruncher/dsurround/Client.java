@@ -29,6 +29,8 @@ import org.orecruncher.dsurround.shader.ShaderManager;
 import org.orecruncher.dsurround.sound.IAudioPlayer;
 import org.orecruncher.dsurround.sound.MinecraftAudioPlayer;
 import org.orecruncher.dsurround.weather.Weather;
+import org.orecruncher.dsurround.aurora.AuroraFactory;
+import org.orecruncher.dsurround.aurora.AuroraRenderHandler;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -42,6 +44,7 @@ public final class Client {
 
     private final IModLog logger;
     private CompletableFuture<Optional<VersionResult>> versionInfo;
+    private AuroraFactory auroraFactory;
 
     public Client() {
         // Bootstrap library functions
@@ -103,6 +106,7 @@ public final class Client {
                 .registerSingleton(Config.compassAndClockOptions)
                 .registerSingleton(Config.otherOptions)
                 .registerSingleton(Config.weather)
+                .registerSingleton(Config.aurora)
                 .registerSingleton(IConditionEvaluator.class, ConditionEvaluator.class)
                 .registerSingleton(IVersionChecker.class, VersionChecker.class)
                 .registerSingleton(ITagLibrary.class, TagLibrary.class)
@@ -169,6 +173,10 @@ public final class Client {
         // Initialize shader system
         ShaderManager.initialize();
 
+        // Initialize aurora system
+        this.auroraFactory = new AuroraFactory();
+        AuroraRenderHandler.setAuroraFactory(this.auroraFactory);
+
         this.logger.info("[%s] Finalization complete", Constants.MOD_ID);
     }
 
@@ -199,6 +207,11 @@ public final class Client {
 
         // Clear entity effects when disconnecting
         EntityEffectsManager.getInstance().clear();
+
+        // Clear aurora effects
+        if (this.auroraFactory != null) {
+            this.auroraFactory.clear();
+        }
     }
 
     private void onTick(Minecraft minecraftClient) {
@@ -210,5 +223,10 @@ public final class Client {
 
         // Update entity effects system
         EntityEffectsManager.getInstance().tick();
+
+        // Update aurora system
+        if (this.auroraFactory != null) {
+            this.auroraFactory.tick();
+        }
     }
 }

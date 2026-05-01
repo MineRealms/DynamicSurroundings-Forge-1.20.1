@@ -54,6 +54,10 @@ public class Configuration extends ConfigurationData {
     public final WeatherEffects weather = new WeatherEffects();
 
     @Property
+    @Comment("Configuration options for aurora effects")
+    public final AuroraEffects aurora = new AuroraEffects();
+
+    @Property
     @Comment("Configuration options for other things")
     public final OtherOptions otherOptions = new OtherOptions();
 
@@ -388,5 +392,21 @@ public class Configuration extends ConfigurationData {
         @DoubleRange(min = 0.0D, max = 1.0D)
         @Comment("Amount to reduce fog end distance at maximum storm intensity (0.0 = no change, 1.0 = maximum reduction)")
         public double fogEndReduction = 0.4D;
+    }
+
+    public static class AuroraEffects {
+        @Property
+        @Comment("Enable/disable aurora effects")
+        public boolean enableAuroras = true;
+
+        @Property
+        @IntegerRange(min = 1, max = 10)
+        @Slider
+        @Comment("Maximum number of auroras that can be active at once")
+        public int maxAuroras = 3;
+
+        @Property
+        @Comment("Enable/disable use of shaders for aurora rendering (better quality but may impact performance)")
+        public boolean useShaders = true;
     }
 }
