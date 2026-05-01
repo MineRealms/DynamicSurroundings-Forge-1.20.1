@@ -1,0 +1,68 @@
+{
+  "acoustics": {
+    "stone": {
+      "walk": ["minecraft:block.stone.step"],
+      "run": ["minecraft:block.stone.step"],
+      "jump": ["minecraft:block.stone.step"],
+      "land": ["minecraft:block.stone.fall"],
+      "volume": 1.0,
+      "pitchVariation": 0.1
+    },
+    "wood": {
+      "walk": ["minecraft:block.wood.step"],
+      "run": ["minecraft:block.wood.step"],
+      "jump": ["minecraft:block.wood.step"],
+      "land": ["minecraft:block.wood.fall"],
+      "volume": 1.0,
+      "pitchVariation": 0.1
+    },
+    "grass": {
+      "walk": ["minecraft:block.grass.step"],
+      "run": ["minecraft:block.grass.step"],
+      "jump": ["minecraft:block.grass.step"],
+      "land": ["minecraft:block.grass.fall"],
+      "volume": 0.8,
+      "pitchVariation": 0.15
+    },
+    "gravel": {
+      "walk": ["minecraft:block.gravel.step"],
+      "run": ["minecraft:block.gravel.step"],
+      "jump": ["minecraft:block.gravel.step"],
+      "land": ["minecraft:block.gravel.fall"],
+      "volume": 1.0,
+      "pitchVariation": 0.1
+    },
+    "sand": {
+      "walk": ["minecraft:block.sand.step"],
+      "run": ["minecraft:block.sand.step"],
+      "jump": ["minecraft:block.sand.step"],
+      "land": ["minecraft:block.sand.fall"],
+      "volume": 0.9,
+      "pitchVariation": 0.1
+    },
+    "snow": {
+      "walk": ["minecraft:block.snow.step"],
+      "run": ["minecraft:block.snow.step"],
+      "jump": ["minecraft:block.snow.step"],
+      "land": ["minecraft:block.snow.fall"],
+      "volume": 0.7,
+      "pitchVariation": 0.15
+    },
+    "metal": {
+      "walk": ["minecraft:block.metal.step"],
+      "run": ["minecraft:block.metal.step"],
+      "jump": ["minecraft:block.metal.step"],
+      "land": ["minecraft:block.metal.fall"],
+      "volume": 1.0,
+      "pitchVariation": 0.05
+    },
+    "wool": {
+      "walk": ["minecraft:block.wool.step"],
+      "run": ["minecraft:block.wool.step"],
+      "jump": ["minecraft:block.wool.step"],
+      "land": ["minecraft:block.wool.fall"],
+      "volume": 0.5,
+      "pitchVariation": 0.1
+    }
+  }
+}

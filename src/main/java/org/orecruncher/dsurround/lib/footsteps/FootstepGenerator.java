@@ -73,6 +73,9 @@ public class FootstepGenerator {
             MovementType type = determineMovementType(player);
             playFootstepSound(player, type);
         }
+
+        // Check for armor sounds
+        ArmorSoundHandler.getInstance().onPlayerMove(player, movementSpeed);
     }
 
     /**

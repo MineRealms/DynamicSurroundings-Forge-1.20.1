@@ -1,5 +1,6 @@
 package org.orecruncher.dsurround.lib.footsteps;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.Block;
@@ -58,6 +59,14 @@ public class AcousticsManager {
 
         // Map vanilla blocks to profiles
         registerVanillaBlocks();
+
+        // Load from resources (will override defaults if present)
+        try {
+            var resourceManager = Minecraft.getInstance().getResourceManager();
+            AcousticsLoader.loadAcoustics(resourceManager, this);
+        } catch (Exception e) {
+            Library.LOGGER.error(e, "Failed to load acoustics from resources, using defaults");
+        }
 
         Library.LOGGER.info("Registered {} acoustic profiles and {} block mappings",
             this.profiles.size(), this.blockAcoustics.size());
