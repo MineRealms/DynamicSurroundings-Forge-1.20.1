@@ -5,6 +5,7 @@ import net.minecraft.client.sounds.SoundManager;
 import org.orecruncher.dsurround.config.libraries.*;
 import org.orecruncher.dsurround.config.libraries.impl.*;
 import org.orecruncher.dsurround.effects.blocks.BlockEffectsHandler;
+import org.orecruncher.dsurround.effects.entity.EntityEffectsManager;
 import org.orecruncher.dsurround.effects.particles.ParticleSheets;
 import org.orecruncher.dsurround.gui.overlay.OverlayManager;
 import org.orecruncher.dsurround.gui.keyboard.KeyBindings;
@@ -82,6 +83,7 @@ public final class Client {
 
         ClientState.STARTED.register(this::onComplete, HandlerPriority.VERY_HIGH);
         ClientState.ON_CONNECT.register(this::onConnect, HandlerPriority.LOW);
+        ClientState.ON_DISCONNECT.register(this::onDisconnect, HandlerPriority.LOW);
         ClientState.TICK_END.register(this::onTick, HandlerPriority.LOW);
 
         // Register core services
@@ -158,6 +160,9 @@ public final class Client {
         // Initialize the block effects system
         BlockEffectsHandler.getInstance().initialize();
 
+        // Initialize the entity effects system
+        EntityEffectsManager.getInstance();
+
         this.logger.info("[%s] Finalization complete", Constants.MOD_ID);
     }
 
@@ -179,8 +184,16 @@ public final class Client {
         }
     }
 
+    private void onDisconnect(Minecraft minecraftClient) {
+        // Clear entity effects when disconnecting
+        EntityEffectsManager.getInstance().clear();
+    }
+
     private void onTick(Minecraft minecraftClient) {
         // Update block effects system
         BlockEffectsHandler.getInstance().onTick();
+
+        // Update entity effects system
+        EntityEffectsManager.getInstance().tick();
     }
 }

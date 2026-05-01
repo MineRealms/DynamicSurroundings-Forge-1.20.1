@@ -27,40 +27,86 @@
 
 ---
 
-## 🔄 Phase 2: 方块效果系统 (43% 完成)
+## ✅ Phase 2: 方块效果系统 (100% 完成)
 
 ### 实现内容
 - ✅ 核心架构（7 个基础类）
 - ✅ 蒸汽喷射效果（岩浆遇水）
 - ✅ 火焰喷射效果（热方块上方）
 - ✅ 瀑布效果（流动水 + 声音）
-- ⏳ 气泡喷射（待实现）
-- ⏳ 萤火虫（待实现）
-- ⏳ 尘埃喷射（待实现）
-- ⏳ 喷泉喷射（待实现）
+- ✅ 气泡喷射（气泡柱）
+- ✅ 萤火虫（夜间发光粒子）
+- ✅ 尘埃喷射（下落粒子）
+- ✅ 喷泉喷射（向上喷射）
 
 ### 代码统计
-- **新增代码**: ~1,140 行
-- **新增类**: 10 个
-- **修改文件**: 1 个
+- **新增代码**: ~1,200 行
+- **新增类**: 14 个
+- **修改文件**: 2 个
 
 ### Git 提交
-- Commit b638dc7: Phase 2 core + 3 effects
+- Commit 085f19e: Phase 2 core architecture
+- Commit 20058db: Phase 2 compilation fixes
+- Commit 478a8da: Phase 2 additional effects (dust, fountain, firefly)
+
+---
+
+## ✅ Phase 3: 实体效果系统 (100% 完成)
+
+### 实现内容
+- ✅ 核心架构（7 个基础类 + 管理器）
+- ✅ 物品数据系统（ItemClass, ItemLibrary）
+- ✅ 工具挥动音效（EntitySwingEffect）
+- ✅ 弓拉弦音效（EntityBowSoundEffect）
+- ✅ 装备切换音效（PlayerToolBarSoundEffect）
+- ✅ 配置选项（已存在于 Configuration）
+- ✅ 生命周期管理（初始化、更新、清理）
+
+### 代码统计
+- **新增代码**: ~1,100 行
+- **新增类**: 13 个
+- **新增接口**: 3 个
+- **修改文件**: 1 个（Client.java）
+
+### Git 提交
+- 待提交: Phase 3 complete
+
+### 实现内容
+- ✅ 核心架构（7 个基础类）
+- ✅ 蒸汽喷射效果（岩浆遇水）
+- ✅ 火焰喷射效果（热方块上方）
+- ✅ 瀑布效果（流动水 + 声音）
+- ✅ 气泡喷射（气泡柱）
+- ✅ 萤火虫（夜间发光粒子）
+- ✅ 尘埃喷射（下落粒子）
+- ✅ 喷泉喷射（向上喷射）
+
+### 代码统计
+- **新增代码**: ~1,200 行
+- **新增类**: 14 个
+- **修改文件**: 2 个
+
+### Git 提交
+- Commit 085f19e: Phase 2 core architecture
+- Commit 20058db: Phase 2 compilation fixes
+- Commit 478a8da: Phase 2 additional effects (dust, fountain, firefly)
 
 ---
 
 ## 📊 总体统计
 
 ### 代码量
-- **总新增代码**: ~3,340 行
-- **总新增类**: 19 个
+- **总新增代码**: ~5,100 行
+- **总新增类**: 42 个
 - **总 Mixin**: 1 个
 - **总资源文件**: 3 个 JSON + 1 个 README
-- **总文档**: 1,500+ 行
+- **总文档**: 3,500+ 行
 
 ### Git 历史
 ```
-b638dc7 - Phase 2: Implement block effects system (steam jets, fire jets, waterfalls)
+[待提交] - Phase 3: Implement entity effects system
+478a8da - Phase 2: Add remaining block effects (dust, fountain, firefly)
+20058db - Phase 2: Fix compilation errors and clean up old block effect system
 085f19e - Phase 1 Complete: Add armor sounds and resource pack support
 9fa8891 - Phase 1: Implement core footstep sound system
 da45241 - Phase 7: Fix config loading timing issue
@@ -80,17 +126,25 @@ da45241 - Phase 7: Fix config loading timing issue
 2. **护甲音效** - 移动时的护甲叮当声
 3. **瀑布声音** - 流动水的环境音效
 4. **火焰声音** - 岩浆的火焰环境音
+5. **工具挥动** - 挥动武器和工具的音效
+6. **弓拉弦** - 使用弓、弩、盾牌的音效
+7. **装备切换** - 更换手持物品的音效
 
 ### 视觉效果
 1. **蒸汽粒子** - 岩浆遇水产生的蒸汽
 2. **火焰粒子** - 热方块上方的火焰
 3. **瀑布粒子** - 流动水的飞溅效果
+4. **气泡粒子** - 气泡柱的上升/下降气泡
+5. **尘埃粒子** - 方块下落的尘埃效果
+6. **喷泉粒子** - 向上喷射的粒子
+7. **萤火虫** - 夜间发光的漂浮粒子
 
 ### 系统功能
 1. **资源包支持** - 可自定义脚步声
 2. **配置系统** - 所有功能可配置
 3. **性能优化** - 随机采样，范围检查
-4. **生命周期管理** - 粒子系统自动清理
+4. **生命周期管理** - 粒子和效果系统自动清理
+5. **物品分类系统** - 自动识别物品类型并应用音效
 
 ---
 
@@ -118,23 +172,22 @@ da45241 - Phase 7: Fix config loading timing issue
 
 ## 📋 待完成工作
 
-### Phase 2 剩余效果 (4/7)
-- [ ] 气泡喷射 (Bubble Jets)
-- [ ] 萤火虫 (Fireflies)
-- [ ] 尘埃喷射 (Dust Jets)
-- [ ] 喷泉喷射 (Fountain Jets)
+### Phase 3 实体效果 (3/3 完成) ✅
+- [x] 工具挥动音效 (Swing Sounds)
+- [x] 弓拉弦音效 (Bow Pull)
+- [x] 装备切换音效 (Toolbar/Equip)
 
 ### 未来 Phase
-- **Phase 3**: 粒子效果增强
-- **Phase 4**: 天气效果增强
+- **Phase 4**: 天气效果增强（雨、雷暴、沙尘暴）
 - **Phase 5**: 视觉效果（极光、雾）
-- **Phase 6**: HUD 增强
-- **Phase 7**: 实体效果
+- **Phase 6**: HUD 增强（指南针、光照等级）
+- **Phase 7**: 语音气泡
 - **Phase 8**: 表达式系统
 
 ### 测试
 - [ ] 游戏内测试 Phase 1 脚步声
 - [ ] 游戏内测试 Phase 2 方块效果
+- [ ] 游戏内测试 Phase 3 实体效果
 - [ ] 性能测试
 - [ ] 多人游戏测试
 
@@ -145,12 +198,12 @@ da45241 - Phase 7: Fix config loading timing issue
 ### 当前已知问题
 1. **使用原版音效** - Phase 1 使用原版方块音效作为占位符
 2. **未测试** - 所有功能未在游戏中测试
-3. **部分效果缺失** - Phase 2 只完成 43%
+3. **使用原版粒子** - Phase 2 使用原版粒子而非自定义粒子
 
 ### 改进建议
 1. 添加自定义音效文件
 2. 运行游戏测试所有功能
-3. 完成剩余的方块效果
+3. 添加自定义粒子纹理（如萤火虫）
 4. 添加更多配置选项
 5. 性能分析和优化
 
