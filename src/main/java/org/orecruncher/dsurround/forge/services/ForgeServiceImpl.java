@@ -168,8 +168,6 @@ public class ForgeServiceImpl implements IPlatform {
 
     @Override
     public Optional<IScreenFactory<?>> getModConfigScreenFactory(Class<? extends ConfigurationData> configClass) {
-        // TODO: Implement Forge config screen integration
-        // Can use Cloth Config for Forge or Forge's built-in config system
-        return Optional.empty();
+        return Optional.of(new org.orecruncher.dsurround.forge.config.ForgeConfigScreenFactory());
     }
 }
