@@ -31,6 +31,7 @@ import org.orecruncher.dsurround.sound.MinecraftAudioPlayer;
 import org.orecruncher.dsurround.weather.Weather;
 import org.orecruncher.dsurround.aurora.AuroraFactory;
 import org.orecruncher.dsurround.aurora.AuroraRenderHandler;
+import org.orecruncher.dsurround.client.handlers.EffectManager;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -184,6 +185,9 @@ public final class Client {
         // Initialize weather system (assume no server-side mod for now)
         Weather.register(false);
 
+        // Connect the effect manager
+        EffectManager.connect();
+
         // Display version information when joining a game and when a chat window is available.
         try {
             var versionQueryResult = this.versionInfo.get();
@@ -202,6 +206,9 @@ public final class Client {
     }
 
     private void onDisconnect(Minecraft minecraftClient) {
+        // Disconnect the effect manager
+        EffectManager.disconnect();
+
         // Unregister weather system
         Weather.unregister();
 

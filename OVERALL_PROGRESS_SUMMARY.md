@@ -274,14 +274,57 @@
 
 ---
 
+## ✅ Phase 8: Client Handlers 系统 (100% 完成)
+
+### 已完成 ✅
+- ✅ 核心架构
+  - EffectHandlerBase（基类，~105 行）
+  - EffectManager（中央管理器，~200 行）
+  - EnvironStateHandler（环境状态追踪，~280 行）
+- ✅ 生命周期管理
+  - connect/disconnect 钩子
+  - 每 tick 处理协调
+  - 错误隔离（单个 handler 失败不影响其他）
+- ✅ 环境状态 API
+  - 玩家位置、温度、装备
+  - 维度信息
+  - 光照等级
+  - 位置检测（室内/地下/太空/云层）
+  - 玩家状态查询（受伤/饥饿/燃烧等）
+  - Tick 计数器
+- ✅ 集成
+  - Client.java 连接/断开钩子
+  - 与 Capabilities 系统集成（Phase 7）
+  - 静态 API 供其他系统使用
+
+### 代码统计
+- **新增代码**: ~585 行
+- **新增类**: 3 个
+- **修改文件**: 1 个
+- **静态 API 方法**: 20+
+
+### Git 提交
+- Commit [待提交]: Phase 8 - Client handlers system
+
+### 关键变化（1.12.2 → 1.20.1）
+- **事件系统**: `@SubscribeEvent` → `@Mod.EventBusSubscriber`
+- **玩家访问**: `Minecraft.getMinecraft()` → `Minecraft.getInstance()`
+- **世界访问**: `player.getEntityWorld()` → `player.level()`
+- **位置**: `new BlockPos(x, y, z)` → `player.blockPosition()`
+- **光照**: `getLightFor(EnumSkyBlock.BLOCK)` → `getBrightness(LightLayer.BLOCK)`
+- **护甲**: 自定义方法 → `player.getInventory().getArmor(slot)`
+- **维度**: `world.provider.getDimension()` → `world.dimension().location()`
+
+---
+
 ## 📊 总体统计
 
 ### 代码量
-- **总新增代码**: ~9,960 行
-- **总新增类**: 89 个
+- **总新增代码**: ~10,545 行
+- **总新增类**: 92 个
 - **总 Mixin**: 2 个
 - **总资源文件**: 3 个 JSON + 1 个 README + 24 个纹理 + 2 个 Shader
-- **总文档**: 7,500+ 行
+- **总文档**: 8,000+ 行
 
 ### Git 历史
 ```
