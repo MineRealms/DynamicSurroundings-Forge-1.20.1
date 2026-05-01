@@ -2,7 +2,7 @@ package org.orecruncher.dsurround.config.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.orecruncher.dsurround.config.BlockEffectType;
+import org.orecruncher.dsurround.effects.blocks.BlockEffectType;
 import org.orecruncher.dsurround.lib.scripting.Script;
 
 public record BlockEffectConfigRule(

@@ -114,10 +114,11 @@ public class BlockInfo {
             this.addToSounds(acousticEntry);
         }
 
-        for (var e : config.effects()) {
-            var effect = e.effect().createInstance(e.spawnChance(), e.conditions());
-            effect.ifPresent(this::addToBlockEffects);
-        }
+        // TODO: Block effects are now handled by BlockEffectsHandler
+        // for (var e : config.effects()) {
+        //     var effect = e.effect().createInstance(e.spawnChance(), e.conditions());
+        //     effect.ifPresent(this::addToBlockEffects);
+        // }
     }
 
     private void clearSounds() {

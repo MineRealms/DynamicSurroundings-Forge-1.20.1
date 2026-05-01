@@ -61,7 +61,10 @@ public class BlockEffectsHandler {
         // Register waterfalls
         this.scanner.registerEffect(new WaterfallEffect());
 
-        // TODO: Add more effects (bubbles, fireflies, etc.)
+        // Register bubble jets
+        this.scanner.registerEffect(new BubbleJetEffect());
+
+        // TODO: Add more effects (fireflies, dust, fountain)
     }
 
     /**

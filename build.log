@@ -19,33 +19,28 @@ Java: 17.0.18, JVM: 17.0.18+8 (Eclipse Adoptium), Arch: amd64
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
 注: Writing searge composite mappings to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-mappings.tsrg
-H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\lib\footsteps\AcousticsManager.java:50: 错误: 找不到符号
-        Constants.LOGGER.info("Initializing Acoustics Manager");
-                 ^
-  符号:   变量 LOGGER
-  位置: 类 Constants
-H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\lib\footsteps\AcousticsManager.java:62: 错误: 找不到符号
-        Constants.LOGGER.info("Registered {} acoustic profiles and {} block mappings",
-                 ^
-  符号:   变量 LOGGER
-  位置: 类 Constants
 注: 某些输入文件使用或覆盖了已过时的 API。
 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
 注: H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientWorld.java使用了未经检查或不安全的操作。
 注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
-2 个错误
 
-> Task :compileJava FAILED
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-Execution failed for task ':compileJava'.
-> Compilation failed; see the compiler error output for details.
-
-* Try:
-> Run with --info option to get more log output.
-> Run with --scan to get full insights.
+> Task :addMixinsToJar
+> Task :processResources
+> Task :classes
+> Task :jar
+> Task :configureReobfTaskForReobfJar
+> Task :reobfJar
+> Task :configureReobfTaskForReobfJarJar
+> Task :addMixinsToJarJar
+> Task :jarJar SKIPPED
+> Task :reobfJarJar SKIPPED
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
 
@@ -53,5 +48,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 35s
-4 actionable tasks: 2 executed, 2 up-to-date
+BUILD SUCCESSFUL in 45s
+11 actionable tasks: 9 executed, 2 up-to-date
