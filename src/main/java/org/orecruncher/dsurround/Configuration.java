@@ -34,6 +34,10 @@ public class Configuration extends ConfigurationData {
     public final EntityEffects entityEffects = new EntityEffects();
 
     @Property
+    @Comment("Configuration options for footstep sounds")
+    public final Footsteps footsteps = new Footsteps();
+
+    @Property
     @Comment("Configuration options for footstep accent effects")
     public final FootstepAccents footstepAccents = new FootstepAccents();
 
@@ -237,6 +241,32 @@ public class Configuration extends ConfigurationData {
         @RestartRequired(client = false)
         @Comment("Enable/disable sound effect when walking through dense brush")
         public boolean enableBrushStepEffect = true;
+    }
+
+    public static class Footsteps {
+        @Property
+        @Comment("Enable/disable footstep sounds globally")
+        public boolean enabled = true;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 2.0D)
+        @Comment("Volume scale for footstep sounds")
+        public double volumeScale = 1.0D;
+
+        @Property
+        @Comment("Enable/disable armor jingling sounds when moving")
+        public boolean armorSounds = true;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 2.0D)
+        @Comment("Volume scale for armor sounds")
+        public double armorVolumeScale = 0.5D;
+
+        @Property
+        @Comment("Enable/disable footstep sounds in first person view")
+        public boolean firstPersonFootsteps = true;
     }
 
     public static class FootstepAccents {

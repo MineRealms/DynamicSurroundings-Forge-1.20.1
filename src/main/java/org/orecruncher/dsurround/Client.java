@@ -12,6 +12,7 @@ import org.orecruncher.dsurround.lib.Library;
 import org.orecruncher.dsurround.lib.config.ConfigurationData;
 import org.orecruncher.dsurround.lib.di.ContainerManager;
 import org.orecruncher.dsurround.lib.events.HandlerPriority;
+import org.orecruncher.dsurround.lib.footsteps.AcousticsManager;
 import org.orecruncher.dsurround.lib.logging.IModLog;
 import org.orecruncher.dsurround.lib.logging.ModLog;
 import org.orecruncher.dsurround.eventing.ClientState;
@@ -90,6 +91,7 @@ public final class Client {
                 .registerSingleton(Config.soundOptions)
                 .registerSingleton(Config.blockEffects)
                 .registerSingleton(Config.entityEffects)
+                .registerSingleton(Config.footsteps)
                 .registerSingleton(Config.footstepAccents)
                 .registerSingleton(Config.particleTweaks)
                 .registerSingleton(Config.compassAndClockOptions)
@@ -147,6 +149,9 @@ public final class Client {
         // These sheets are purely client side - they have to be manhandled into the
         // Minecraft environment.
         ParticleSheets.register();
+
+        // Initialize the acoustics manager for footstep sounds
+        AcousticsManager.getInstance().initialize();
 
         this.logger.info("[%s] Finalization complete", Constants.MOD_ID);
     }

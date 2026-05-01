@@ -14,17 +14,25 @@ Java: 17.0.18, JVM: 17.0.18+8 (Eclipse Adoptium), Arch: amd64
 注: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
 注: Loading searge mappings from H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\createMcpToSrg\output.tsrg
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
-H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientChunkManager.java:10: 错误: Could not locate @Accessor target storage in target net.minecraft.client.multiplayer.ClientChunkCache
-    @Accessor("storage")
-    ^
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
 注: Writing searge composite mappings to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-mappings.tsrg
-H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientChunkManager.java:11: 错误: ClientChunkCache.Storage在ClientChunkCache中不是公共的; 无法从外部程序包中对其进行访问
-    ClientChunkCache.Storage dsurround_getClientChunkMap();
-                    ^
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
 注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
 注: Writing searge composite mappings to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-mappings.tsrg
+H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\lib\footsteps\AcousticsManager.java:50: 错误: 找不到符号
+        Constants.LOGGER.info("Initializing Acoustics Manager");
+                 ^
+  符号:   变量 LOGGER
+  位置: 类 Constants
+H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\lib\footsteps\AcousticsManager.java:62: 错误: 找不到符号
+        Constants.LOGGER.info("Registered {} acoustic profiles and {} block mappings",
+                 ^
+  符号:   变量 LOGGER
+  位置: 类 Constants
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientWorld.java使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
 2 个错误
 
 > Task :compileJava FAILED
@@ -45,5 +53,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 27s
+BUILD FAILED in 35s
 4 actionable tasks: 2 executed, 2 up-to-date
