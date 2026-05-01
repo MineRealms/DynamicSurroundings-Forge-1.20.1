@@ -22,6 +22,10 @@ public final class ForgeMod {
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist == Dist.CLIENT) {
             this.client = new Client();
 
+            // Initialize client immediately to register configuration in DI container
+            // This must happen before Minecraft creates the Gui instance
+            this.client.initializeClient();
+
             IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
             modEventBus.addListener(this::onClientSetup);
         } else {
@@ -30,9 +34,7 @@ public final class ForgeMod {
     }
 
     private void onClientSetup(final FMLClientSetupEvent event) {
-        // Boot the mod on the main thread
-        event.enqueueWork(() -> {
-            this.client.initializeClient();
-        });
+        // Client is already initialized in constructor
+        // This event can be used for additional setup if needed
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.TagsUpdatedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,7 +32,6 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeServiceImpl implements IPlatform {
 
     private final ResourceLookupHelper lookupHelper;
@@ -39,39 +39,9 @@ public class ForgeServiceImpl implements IPlatform {
 
     public ForgeServiceImpl() {
         this.lookupHelper = new ResourceLookupHelper(PackType.SERVER_DATA);
-    }
 
-    @SubscribeEvent
-    public static void onResourceReload(AddReloadListenerEvent event) {
-        event.addListener((preparationBarrier, resourceManager, preparationsProfiler, reloadProfiler, backgroundExecutor, gameExecutor) ->
-                preparationBarrier.wait(null).thenRunAsync(() -> {
-                    if (GameUtils.getMC().isSameThread()) {
-                        var platform = (ForgeServiceImpl) org.orecruncher.dsurround.lib.platform.Services.PLATFORM;
-                        Library.LOGGER.info("Refreshing lookup helper");
-                        platform.lookupHelper.refresh(platform);
-
-                        Library.LOGGER.info("Resource reload - resetting configuration caches");
-                        var resourceUtilities = ResourceUtilities.createForResourceManager(resourceManager);
-                        AssetLibraryEvent.RELOAD.raise().onReload(resourceUtilities, IReloadEvent.Scope.RESOURCES);
-                    }
-                }, gameExecutor)
-        );
-    }
-
-    @SubscribeEvent
-    public static void onTagsUpdated(TagsUpdatedEvent event) {
-        if (event.getUpdateCause() == TagsUpdatedEvent.UpdateCause.CLIENT_PACKET_RECEIVED) {
-            ClientState.TAG_SYNC.raise().onTagSync(event.getRegistryAccess());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        var platform = (ForgeServiceImpl) org.orecruncher.dsurround.lib.platform.Services.PLATFORM;
-        for (var keyMapping : platform.pendingKeyMappings) {
-            event.register(keyMapping);
-        }
-        platform.pendingKeyMappings.clear();
+        // Register to Forge event bus for game events
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler(this));
     }
 
     @Override
@@ -169,5 +139,50 @@ public class ForgeServiceImpl implements IPlatform {
     @Override
     public Optional<IScreenFactory<?>> getModConfigScreenFactory(Class<? extends ConfigurationData> configClass) {
         return Optional.of(new org.orecruncher.dsurround.forge.config.ForgeConfigScreenFactory());
+    }
+
+    // Mod event bus handler for key mappings
+    @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ModEventHandler {
+        @SubscribeEvent
+        public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
+            var platform = (ForgeServiceImpl) org.orecruncher.dsurround.lib.platform.Services.PLATFORM;
+            for (var keyMapping : platform.pendingKeyMappings) {
+                event.register(keyMapping);
+            }
+            platform.pendingKeyMappings.clear();
+        }
+    }
+
+    // Forge event bus handler for game events
+    public static class ForgeEventHandler {
+        private final ForgeServiceImpl platform;
+
+        public ForgeEventHandler(ForgeServiceImpl platform) {
+            this.platform = platform;
+        }
+
+        @SubscribeEvent
+        public void onResourceReload(AddReloadListenerEvent event) {
+            event.addListener((preparationBarrier, resourceManager, preparationsProfiler, reloadProfiler, backgroundExecutor, gameExecutor) ->
+                    preparationBarrier.wait(null).thenRunAsync(() -> {
+                        if (GameUtils.getMC().isSameThread()) {
+                            Library.LOGGER.info("Refreshing lookup helper");
+                            platform.lookupHelper.refresh(platform);
+
+                            Library.LOGGER.info("Resource reload - resetting configuration caches");
+                            var resourceUtilities = ResourceUtilities.createForResourceManager(resourceManager);
+                            AssetLibraryEvent.RELOAD.raise().onReload(resourceUtilities, IReloadEvent.Scope.RESOURCES);
+                        }
+                    }, gameExecutor)
+            );
+        }
+
+        @SubscribeEvent
+        public void onTagsUpdated(TagsUpdatedEvent event) {
+            if (event.getUpdateCause() == TagsUpdatedEvent.UpdateCause.CLIENT_PACKET_RECEIVED) {
+                ClientState.TAG_SYNC.raise().onTagSync(event.getRegistryAccess());
+            }
+        }
     }
 }
