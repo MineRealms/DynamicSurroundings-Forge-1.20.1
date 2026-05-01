@@ -58,8 +58,14 @@ public final class BiomeLibrary implements IBiomeLibrary {
         this.version++;
 
         if (scope == IReloadEvent.Scope.TAGS) {
-            this.logger.info("[BiomeLibrary] received tag update notification; version is now %d", this.version);
-            return;
+            // If we haven't loaded any configs yet (e.g., during initial startup),
+            // treat this as a full reload to ensure configs are loaded
+            if (this.biomeConfigs.isEmpty()) {
+                this.logger.info("[BiomeLibrary] received tag update notification with empty configs - forcing full reload");
+            } else {
+                this.logger.info("[BiomeLibrary] received tag update notification; version is now %d", this.version);
+                return;
+            }
         }
 
         // Wipe out the internal biome cache.  These will be reset.

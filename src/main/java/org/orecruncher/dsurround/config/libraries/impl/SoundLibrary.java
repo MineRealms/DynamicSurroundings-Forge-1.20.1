@@ -83,8 +83,15 @@ public final class SoundLibrary implements ISoundLibrary {
 
     @Override
     public void reload(ResourceUtilities resourceUtilities, IReloadEvent.Scope scope) {
-        if (scope == IReloadEvent.Scope.TAGS)
-            return;
+        if (scope == IReloadEvent.Scope.TAGS) {
+            // If we haven't loaded any configs yet (e.g., during initial startup),
+            // treat this as a full reload to ensure configs are loaded
+            if (this.soundFactories.isEmpty()) {
+                Library.LOGGER.info("[SoundLibrary] received tag update notification with empty configs - forcing full reload");
+            } else {
+                return;
+            }
+        }
 
         // Forget cached data and reload
         this.myRegistry.clear();

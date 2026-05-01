@@ -55,8 +55,14 @@ public class BlockLibrary implements IBlockLibrary {
         this.version++;
 
         if (scope == IReloadEvent.Scope.TAGS) {
-            this.logger.info("[BlockLibrary] received tag update notification; version is now %d", this.version);
-            return;
+            // If we haven't loaded any configs yet (e.g., during initial startup),
+            // treat this as a full reload to ensure configs are loaded
+            if (this.blockConfigs.isEmpty()) {
+                this.logger.info("[BlockLibrary] received tag update notification with empty configs - forcing full reload");
+            } else {
+                this.logger.info("[BlockLibrary] received tag update notification; version is now %d", this.version);
+                return;
+            }
         }
 
         this.blockConfigs.clear();
