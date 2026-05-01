@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:player",
+    "minecraft:hoglin",
+    "minecraft:piglin",
+    "#minecraft:raiders",
+    "#minecraft:skeletons",
+    "minecraft:zombie",
+    "minecraft:husk"
+  ]
+}

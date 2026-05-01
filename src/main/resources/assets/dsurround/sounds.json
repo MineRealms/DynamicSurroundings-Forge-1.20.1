@@ -1,0 +1,1185 @@
+{
+	"thunder": {
+		"subtitle": "dsurround.sound.caption.thunder",
+		"ds_credits": [
+			{
+				"name": "Thunder 1",
+				"author": "Yoyodaman234",
+				"website": "https://www.freesound.org/people/Yoyodaman234",
+				"license": "Creative Commons 0"
+			},
+			{
+				"name": "Donner1.wav",
+				"author": "swuing",
+				"website": "https://www.freesound.org/people/swuing",
+				"license": "Attribution"
+			},
+			{
+				"name": "Thunder - 1 / Thunder - 2",
+				"author": "bone666138",
+				"website": "https://www.freesound.org/people/bone666138",
+				"license": "Attribution"
+			},
+			{
+				"name": "Distant Thunder.wav",
+				"author": "sarson",
+				"website": "https://www.freesound.org/people/sarson",
+				"license": "Creative Commons 0"
+			},
+			{
+				"name": "NM-Mejor-Lado-Thunder-01.wav",
+				"author": "aaronstar",
+				"website": "https://www.freesound.org/people/aaronstar",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/weather/thunder1",
+				"stream": true
+			},
+			{
+				"name": "dsurround:ambient/weather/thunder2",
+				"stream": true
+			},
+			{
+				"name": "dsurround:ambient/weather/thunder3",
+				"stream": true
+			},
+			{
+				"name": "dsurround:ambient/weather/thunder4",
+				"stream": true
+			},
+			{
+				"name": "dsurround:ambient/weather/thunder5",
+				"stream": true
+			},
+			{
+				"name": "dsurround:ambient/weather/thunder6",
+				"stream": true
+			}
+		]
+	},
+	"ice": {
+		"subtitle": "dsurround.sound.caption.ice",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/ice/crack1",
+				"volume": 0.5
+			},
+			{
+				"name": "dsurround:ambient/ice/crack2",
+				"volume": 0.5
+			},
+			{
+				"name": "dsurround:ambient/ice/crack3",
+				"volume": 0.5
+			}
+		]
+	},
+	"biome.wind": {
+		"subtitle": "dsurround.sound.caption.wind",
+		"ds_credits": [
+			{
+				"name": "Wind blowing into some cactus spine, on the top of the mountain, in the desert of Atacama (Chile).",
+				"author": "felix.blume",
+				"website": "https://www.freesound.org/people/felix.blume",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/wind",
+				"stream": true
+			}
+		]
+	},
+	"biome.wind.hills": {
+		"subtitle": "dsurround.sound.caption.wind",
+		"ds_credits": [
+			{
+				"name": "Wind blowing into some cactus spine, on the top of the mountain, in the desert of Atacama (Chile).",
+				"author": "felix.blume",
+				"website": "https://www.freesound.org/people/felix.blume",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"type": "event",
+				"name": "dsurround:biome.wind",
+				"volume": 0.2,
+				"pitch": 1.5,
+				"stream": true
+			}
+		]
+	},
+	"biome.wind.mountains": {
+		"subtitle": "dsurround.sound.caption.wind",
+		"ds_credits": [
+			{
+				"name": "Wind blowing into some cactus spine, on the top of the mountain, in the desert of Atacama (Chile).",
+				"author": "felix.blume",
+				"website": "https://www.freesound.org/people/felix.blume",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"type": "event",
+				"name": "dsurround:biome.wind",
+				"stream": true
+			}
+		]
+	},
+	"biome.wind.desert": {
+		"subtitle": "dsurround.sound.caption.wind",
+		"ds_credits": [
+			{
+				"name": "desertwind1FINAL.wav",
+				"author": "nageor",
+				"website": "https://www.freesound.org/people/nageor",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/desert_wind",
+				"stream": true
+			}
+		]
+	},
+	"biome.wind.arctic": {
+		"subtitle": "dsurround.sound.caption.wind",
+		"ds_credits": [
+			{
+				"name": "Howling Wind Ambience",
+				"author": "DBlover",
+				"website": "https://www.freesound.org/people/DBlover",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/arctic_wind",
+				"stream": true
+			}
+		]
+	},
+	"biome.savanna.day": {
+		"ds_credits": [
+			{
+				"name": "MerlothPark_morning_ambiance.wav",
+				"author": "reinsamba",
+				"website": "https://www.freesound.org/people/reinsamba",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/savanna_day",
+				"stream": true
+			}
+		]
+	},
+	"biome.savanna.night": {
+		"ds_credits": [
+			{
+				"name": "MerlothPark_crickets2.WAV",
+				"author": "reinsamba",
+				"website": "https://www.freesound.org/people/reinsamba",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/savanna_night",
+				"stream": true
+			}
+		]
+	},
+	"biome.crickets": {
+		"ds_credits": [
+			{
+				"name": "Soft, Chilled Crickets Field Recording",
+				"author": "rayjensen",
+				"website": "https://www.freesound.org/people/rayjensen",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/crickets",
+				"stream": true
+			}
+		]
+	},
+	"biome.crickets.deep": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/deep_crickets",
+				"stream": true
+			}
+		]
+	},
+	"biome.plains": {
+		"ds_credits": [
+			{
+				"name": "Calm Morning Outdoor Ambiance",
+				"author": "blouhond",
+				"website": "https://www.freesound.org/people/blouhond",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/plains",
+				"stream": true
+			}
+		]
+	},
+	"biome.forest": {
+		"ds_credits": [
+			{
+				"name": "001_forrest.wav",
+				"author": "joepsporck",
+				"website": "https://www.freesound.org/people/joepsporck",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/forest",
+				"stream": true
+			}
+		]
+	},
+	"biome.forest.deep": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/deep_forest",
+				"stream": true
+			}
+		]
+	},
+	"biome.forest.pine": {
+		"ds_credits": [
+			{
+				"name": "Nord_Odal_Nyhus_04_juni_2011_open_forest_birds_insects_wind_through_large_pines.wav",
+				"author": "nfsgit",
+				"website": "https://www.freesound.org/people/nfsgit",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/pine_forest",
+				"stream": true
+			}
+		]
+	},
+	"biome.beach": {
+		"ds_credits": [
+			{
+				"name": "Fiji Beach (Stereo)128kbps.mp3",
+				"author": "c97059890",
+				"website": "https://www.freesound.org/people/c97059890",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/beach",
+				"stream": true
+			}
+		]
+	},
+	"biome.ocean": {
+		"ds_credits": [
+			{
+				"name": "ocean waves surround me.wav",
+				"author": "bohitomi",
+				"website": "https://www.freesound.org/people/bohitomi",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/ocean",
+				"volume": 0.4,
+				"stream": true
+			}
+		]
+	},
+	"biome.ocean.deep": {
+		"ds_credits": [
+			{
+				"name": "ocean waves surround me.wav",
+				"author": "bohitomi",
+				"website": "https://www.freesound.org/people/bohitomi",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"type": "event",
+				"name": "dsurround:biome.ocean",
+				"pitch": 0.7,
+				"stream": true
+			}
+		]
+	},
+	"biome.river": {
+		"ds_credits": [
+			{
+				"name": "underwater ambience.wav",
+				"author": "AlienXXX",
+				"website": "https://freesound.org/people/AlienXXX",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/river",
+				"stream": true
+			}
+		]
+	},
+	"biome.bog": {
+		"ds_credits": [
+			{
+				"name": "rbh Mpls Bog birds.wav",
+				"author": "RHumphries",
+				"website": "https://freesound.org/people/RHumphries",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/bog",
+				"stream": true
+			}
+		]
+	},
+	"biome.jungle": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/outside/jungle",
+				"volume": 0.2,
+				"pitch": 0.8,
+				"stream": true
+			}
+		]
+	},
+	"soulsand.laughter": {
+		"subtitle": "dsurround.sound.caption.soulsand",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/soulsand/soulsand1",
+				"volume": 0.2
+			},
+			{
+				"name": "dsurround:ambient/soulsand/soulsand2",
+				"volume": 0.2
+			},
+			{
+				"name": "dsurround:ambient/soulsand/soulsand3",
+				"volume": 0.2
+			}
+		]
+	},
+	"dimension.theend": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/end/end",
+				"volume": 0.2,
+				"stream": true
+			}
+		]
+	},
+	"bird": {
+		"subtitle": "dsurround.sound.caption.bird",
+		"sounds": [
+			"dsurround:ambient/birds/bird1",
+			"dsurround:ambient/birds/bird2",
+			"dsurround:ambient/birds/bird3",
+			"dsurround:ambient/birds/bird4",
+			"dsurround:ambient/birds/bird5",
+			"dsurround:ambient/birds/bird6",
+			"dsurround:ambient/birds/bird7",
+			"dsurround:ambient/birds/bird8",
+			"dsurround:ambient/birds/bird9",
+			"dsurround:ambient/birds/bird10"
+		]
+	},
+	"woodpecker": {
+		"subtitle": "dsurround.sound.caption.woodpecker",
+		"sounds": [
+			"dsurround:ambient/birds/woodpecker1",
+			"dsurround:ambient/birds/woodpecker2",
+			"dsurround:ambient/birds/woodpecker3",
+			"dsurround:ambient/birds/woodpecker4",
+			"dsurround:ambient/birds/woodpecker5"
+		]
+	},
+	"raptor": {
+		"subtitle": "dsurround.sound.caption.raptor",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/birds/bald_eagle_chirp",
+				"weight": 2
+			},
+			{
+				"name": "dsurround:ambient/birds/red_tailed_hawk",
+				"weight": 1
+			},
+			{
+				"name": "dsurround:ambient/birds/red_shouldered_hawk",
+				"weight": 2
+			}
+		]
+	},
+	"crow": {
+		"subtitle": "dsurround.sound.caption.crow",
+		"ds_credits": [
+			{
+				"name": "ANML_M_Ext_Crow_Calls_Single1.wav",
+				"author": "conleec",
+				"website": "https://www.freesound.org/people/conleec",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/birds/crow1",
+			"dsurround:ambient/birds/crow2",
+			"dsurround:ambient/birds/crow3",
+			"dsurround:ambient/birds/crow4",
+			"dsurround:ambient/birds/crow5",
+			"dsurround:ambient/birds/crow6",
+			"dsurround:ambient/birds/crow7",
+			"dsurround:ambient/birds/crow8",
+			"dsurround:ambient/birds/crow9",
+			"dsurround:ambient/birds/crow10"
+		]
+	},
+	"owl": {
+		"subtitle": "dsurround.sound.caption.owl",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/owl/owl1",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/owl/owl2",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/owl/owl3",
+				"volume": 0.3
+			}
+		]
+	},
+	"loon": {
+		"subtitle": "dsurround.sound.caption.loon",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/birds/loon1"
+			},
+			{
+				"name": "dsurround:ambient/birds/loon2"
+			}
+		]
+	},
+	"nightingale": {
+		"subtitle": "dsurround.sound.caption.nightingale",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/birds/nightingale1"
+			},
+			{
+				"name": "dsurround:ambient/birds/nightingale2"
+			},
+			{
+				"name": "dsurround:ambient/birds/nightingale3"
+			},
+			{
+				"name": "dsurround:ambient/birds/nightingale4"
+			}
+		]
+	},
+	"biome.underground": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underground/ambient",
+				"volume": 0.3,
+				"stream": true
+			}
+		]
+	},
+	"rockfall": {
+		"subtitle": "dsurround.sound.caption.rockfall",
+		"ds_credits": [
+			{
+				"name": "Rocks falling over rocks, over a steep hill, like a cliff.flac",
+				"author": "gfrog",
+				"website": "https://www.freesound.org/people/gfrog",
+				"license": "Creative Commons 0"
+			},
+			{
+				"name": "Rocks.wav",
+				"author": "adamgryu",
+				"website": "https://www.freesound.org/people/adamgryu",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/underground/smallslide1",
+			"dsurround:ambient/underground/smallslide2",
+			"dsurround:ambient/underground/smallslide3"
+		]
+	},
+	"bigrockfall": {
+		"subtitle": "dsurround.sound.caption.rockfall",
+		"ds_credits": [
+			{
+				"name": "Rockfall in mine.wav",
+				"author": "Benboncan",
+				"website": "https://www.freesound.org/people/Benboncan",
+				"license": "Attribution"
+			},
+			{
+				"name": "Rocks.wav",
+				"author": "adamgryu",
+				"website": "https://www.freesound.org/people/adamgryu",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underground/bigslide1",
+				"volume": 0.4
+			},
+			{
+				"name": "dsurround:ambient/underground/bigslide2",
+				"volume": 0.4
+			}
+		]
+	},
+	"monstergrowl": {
+		"subtitle": "dsurround.sound.caption.monstergrowl",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underground/monster_growl1",
+				"volume": 0.3
+			}
+		]
+	},
+	"waterdrops": {
+		"subtitle": "dsurround.sound.caption.waterdrop",
+		"sounds": [
+			"dsurround:ambient/droplets/water1",
+			"dsurround:ambient/droplets/water2",
+			"dsurround:ambient/droplets/water3"
+		]
+	},
+	"waterdrips": {
+		"subtitle": "dsurround.sound.caption.waterdrop",
+		"ds_credits": [
+			{
+				"name": "Dripping, Very Fast, A.wav",
+				"author": "InspectorJ",
+				"website": "https://www.freesound.org/people/InspectorJ",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/droplets/drop1",
+			"dsurround:ambient/droplets/drop2",
+			"dsurround:ambient/droplets/drop3",
+			"dsurround:ambient/droplets/drop3"
+		]
+	},
+	"seagulls": {
+		"subtitle": "dsurround.sound.caption.seagulls",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/seagulls/seagulls1",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/seagulls/seagulls2",
+				"volume": 0.3
+			}
+		]
+	},
+	"coyote": {
+		"subtitle": "dsurround.sound.caption.howling",
+		"ds_credits": [
+			{
+				"name": "coyote barks and howls",
+				"author": "dkaufman",
+				"website": "https://www.freesound.org/people/dkaufman",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/coyote/coyote1",
+			"dsurround:ambient/coyote/coyote2",
+			"dsurround:ambient/coyote/coyote3",
+			"dsurround:ambient/coyote/coyote4",
+			"dsurround:ambient/coyote/coyote5",
+			"dsurround:ambient/coyote/coyote6"
+		]
+	},
+	"wolf": {
+		"subtitle": "dsurround.sound.caption.howling",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/wolf/wolf1",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/wolf/wolf2",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/wolf/wolf3",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/wolf/wolf4",
+				"volume": 0.3
+			}
+		]
+	},
+	"biome.ocean.deep.under": {
+		"ds_credits": [
+			{
+				"name": "underwater ambience.wav",
+				"author": "AlienXXX",
+				"website": "https://www.freesound.org/people/AlienXXX",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underwater/deepocean",
+				"stream": true
+			}
+		]
+	},
+	"biome.ocean.under": {
+		"ds_credits": [
+			{
+				"name": "underwater ambience.wav",
+				"author": "AlienXXX",
+				"website": "https://www.freesound.org/people/AlienXXX",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underwater/ocean",
+				"stream": true
+			}
+		]
+	},
+	"biome.river.under": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underwater/river",
+				"stream": true
+			}
+		]
+	},
+	"biome.water.under": {
+		"ds_credits": [
+			{
+				"name": "UnderwaterDrowning01.wav",
+				"author": "Abolla",
+				"website": "https://www.freesound.org/people/Abolla",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/underwater/water",
+				"stream": true
+			}
+		]
+	},
+	"whale": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/whale/whale1",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/whale/whale2",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/whale/whale3",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/whale/whale4",
+				"volume": 0.3
+			},
+			{
+				"name": "dsurround:ambient/whale/whale5",
+				"volume": 0.3
+			}
+		]
+	},
+	"player.heartbeat": {
+		"sounds": [
+			"dsurround:ambient/steve/heartbeat"
+		]
+	},
+	"player.tummy": {
+		"subtitle": "dsurround.sound.caption.tummy",
+		"sounds": [
+			"dsurround:ambient/steve/tummy1",
+			"dsurround:ambient/steve/tummy2",
+			"dsurround:ambient/steve/tummy3"
+		]
+	},
+	"netherbrick.breathing": {
+		"subtitle": "dsurround.sound.caption.breathing",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/miscblocks/breathing1",
+				"volume": 0.5
+			},
+			{
+				"name": "dsurround:ambient/miscblocks/breathing2",
+				"volume": 0.5
+			}
+		]
+	},
+	"player.jump": {
+		"sounds": [
+			{
+				"name": "dsurround:ambient/steve/jump",
+				"volume": 0.8
+			}
+		]
+	},
+	"bees": {
+		"subtitle": "dsurround.sound.caption.bees",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/insects/bee1",
+				"volume": 0.05
+			}
+		]
+	},
+	"insectcrawl": {
+		"subtitle": "dsurround.sound.caption.insects",
+		"sounds": [
+			"dsurround:ambient/insects/crawl1",
+			"dsurround:ambient/insects/crawl2",
+			"dsurround:ambient/insects/crawl3"
+		]
+	},
+	"newsprint": {
+		"subtitle": "dsurround.sound.caption.pageflip",
+		"sounds": [
+			"dsurround:ambient/book/newsprint1",
+			"dsurround:ambient/book/newsprint2"
+		]
+	},
+	"pageflip": {
+		"subtitle": "dsurround.sound.caption.pageflip",
+		"sounds": [
+			"dsurround:ambient/book/pageflip1",
+			"dsurround:ambient/book/pageflip2",
+			"dsurround:ambient/book/pageflip3"
+		]
+	},
+	"pageflipheavy": {
+		"subtitle": "dsurround.sound.caption.pageflip",
+		"sounds": [
+			"dsurround:ambient/book/pageflipheavy1",
+			"dsurround:ambient/book/pageflipheavy2",
+			"dsurround:ambient/book/pageflipheavy3"
+		]
+	},
+	"bookshelf": {
+		"subtitle": "dsurround.sound.caption.pageflip",
+		"sounds": [
+			{
+				"name": "dsurround:ambient/book/newsprint1",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/newsprint2",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflip1",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflip2",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflip3",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflipheavy1",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflipheavy2",
+				"volume": 0.175
+			},
+			{
+				"name": "dsurround:ambient/book/pageflipheavy3",
+				"volume": 0.175
+			}
+		]
+	},
+	"waterfall.0": {
+		"ds_credits": [
+			{
+				"name": "Waterfall Winspit Dorset.wav",
+				"author": "genghis attenborough",
+				"website": "https://www.freesound.org/people/genghis%20attenborough",
+				"license": "Attribution Noncommercial"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall0",
+				"attenuation_distance": 22,
+				"preload": true
+			}
+		]
+	},
+	"waterfall.1": {
+		"ds_credits": [
+			{
+				"name": "Running-water-mountain-stream.mp3",
+				"author": "Alexander",
+				"website": "https://orangefreesounds.com/running-water-sound-mountain-stream",
+				"license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall1",
+				"attenuation_distance": 22,
+				"preload": true
+			}
+		]
+	},
+	"waterfall.2": {
+		"ds_credits": [
+			{
+				"name": "Waterfall",
+				"author": "Orpheuz",
+				"website": "https://www.freesound.org/people/Orpheuz",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall2",
+				"attenuation_distance": 24,
+				"preload": true
+			}
+		]
+	},
+	"waterfall.3": {
+		"ds_credits": [
+			{
+				"name": "Small Waterfall at the Mill",
+				"author": "willstepp",
+				"website": "https://www.freesound.org/people/willstepp",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall3",
+				"attenuation_distance": 28,
+				"preload": true
+			}
+		]
+	},
+	"waterfall.4": {
+		"ds_credits": [
+			{
+				"name": "Waterfall, Large, A.wav",
+				"author": "InspectorJ",
+				"website": "https://www.freesound.org/people/InspectorJ",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall4",
+				"attenuation_distance": 30,
+				"preload": true
+			}
+		]
+	},
+	"waterfall.5": {
+		"ds_credits": [
+			{
+				"name": "Waterfall, Small, B.wav",
+				"author": "InspectorJ",
+				"website": "https://www.freesound.org/people/InspectorJ",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/stream/waterfall5",
+				"attenuation_distance": 32,
+				"preload": true
+			}
+		]
+	},
+	"biome.village.rooster": {
+		"subtitle": "dsurround.sound.caption.rooster",
+		"ds_credits": [
+			{
+				"name": "Village ambience rooster and light birds with wind .wav",
+				"author": "Ramston",
+				"website": "https://www.freesound.org/people/Ramston",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/village/rooster1",
+			"dsurround:ambient/village/rooster2",
+			"dsurround:ambient/village/rooster3"
+		]
+	},
+	"biome.village.anvil": {
+		"subtitle": "dsurround.sound.caption.anvil",
+		"ds_credits": [
+			{
+				"name": "Anvil",
+				"author": "MrAuralization",
+				"website": "https://www.freesound.org/people/MrAuralization",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/village/anvil1",
+				"volume": 0.25
+			},
+			{
+				"name": "dsurround:ambient/village/anvil2",
+				"volume": 0.25
+			}
+		]
+	},
+	"biome.village.dogbark": {
+		"subtitle": "dsurround.sound.caption.dog",
+		"ds_credits": [
+			{
+				"name": "Dogs Barking",
+				"author": "darranambler",
+				"website": "https://www.freesound.org/people/darranambler",
+				"license": "Creative Commons 0"
+			}
+		],
+		"sounds": [
+			"dsurround:ambient/village/dogbark1",
+			"dsurround:ambient/village/dogbark2",
+			"dsurround:ambient/village/dogbark3",
+			"dsurround:ambient/village/dogbark4",
+			"dsurround:ambient/village/dogbark5",
+			"dsurround:ambient/village/dogbark6"
+		]
+	},
+	"dimension.nether": {
+		"ds_credits": [
+			{
+				"name": "Creepy Dungeon Ambiance",
+				"author": "DrMinky",
+				"website": "https://www.freesound.org/people/DrMinky",
+				"license": "Attribution"
+			}
+		],
+		"sounds": [
+			{
+				"name": "dsurround:ambient/dimension/nether",
+				"volume": 0.3,
+				"stream": true
+			}
+		]
+	},
+	"item.bow.equip": {
+		"sounds": [
+			"dsurround:items/bow_draw"
+		]
+	},
+	"item.bow.pull": {
+		"subtitle": "dsurround.sound.caption.bow.pull",
+		"sounds": [
+			"dsurround:items/bow_pull1",
+			"dsurround:items/bow_pull2",
+			"dsurround:items/bow_pull3",
+			"dsurround:items/bow_pull4",
+			"dsurround:items/bow_pull5"
+		]
+	},
+	"item.bow.loose": {
+		"sounds": [
+			"dsurround:items/bow_loose1",
+			"dsurround:items/bow_loose2",
+			"dsurround:items/bow_loose3",
+			"dsurround:items/bow_loose4"
+		]
+	},
+	"item.blunt.equip": {
+		"sounds": [
+			"dsurround:items/blunt_draw"
+		]
+	},
+	"item.blunt.swing": {
+		"sounds": [
+			"dsurround:items/blunt_swing1",
+			"dsurround:items/blunt_swing2",
+			"dsurround:items/blunt_swing3",
+			"dsurround:items/blunt_swing4",
+			"dsurround:items/blunt_swing5"
+		]
+	},
+	"item.sword.equip": {
+		"sounds": [
+			"dsurround:items/sword_draw"
+		]
+	},
+	"item.sword.swing": {
+		"sounds": [
+			"dsurround:items/sword_swing1",
+			"dsurround:items/sword_swing2",
+			"dsurround:items/sword_swing3",
+			"dsurround:items/sword_swing4",
+			"dsurround:items/sword_swing5",
+			"dsurround:items/sword_swing6",
+			"dsurround:items/sword_swing7",
+			"dsurround:items/sword_swing8",
+			"dsurround:items/sword_swing9"
+		]
+	},
+	"item.tool.equip": {
+		"sounds": [
+			"dsurround:items/tool_draw"
+		]
+	},
+	"item.tool.swing": {
+		"sounds": [
+			"dsurround:items/swoosh1",
+			"dsurround:items/swoosh2",
+			"dsurround:items/swoosh3",
+			"dsurround:items/swoosh4",
+			"dsurround:items/swoosh5",
+			"dsurround:items/swoosh6",
+			"dsurround:items/swoosh7"
+		]
+	},
+	"item.utility.equip": {
+		"sounds": [
+			"dsurround:items/utility_draw"
+		]
+	},
+	"item.shield.equip": {
+		"sounds": [
+			"dsurround:items/tool_draw"
+		]
+	},
+	"item.shield.use": {
+		"sounds": [
+			"dsurround:items/tool_draw"
+		]
+	},
+	"item.potion.equip": {
+		"sounds": [
+			"dsurround:items/potion_slosh1",
+			"dsurround:items/potion_slosh2",
+			"dsurround:items/potion_slosh3",
+			"dsurround:items/potion_slosh4"
+		]
+	},
+	"footsteps.water_through": {
+		"ds_category": "player",
+		"subtitle": "dsurround.sound.caption.footsteps.water_through",
+		"sounds": [
+			"dsurround:footsteps/water/water_through1",
+			"dsurround:footsteps/water/water_through10",
+			"dsurround:footsteps/water/water_through11",
+			"dsurround:footsteps/water/water_through2",
+			"dsurround:footsteps/water/water_through3",
+			"dsurround:footsteps/water/water_through4",
+			"dsurround:footsteps/water/water_through5",
+			"dsurround:footsteps/water/water_through6",
+			"dsurround:footsteps/water/water_through7",
+			"dsurround:footsteps/water/water_through8",
+			"dsurround:footsteps/water/water_through9"
+		]
+	},
+	"footsteps.floor_squeak": {
+		"ds_category": "player",
+		"subtitle": "dsurround.sound.caption.footsteps.floor_squeak",
+		"sounds": [
+			{
+				"name": "dsurround:footsteps/floor_squeak/floorsqueak1",
+				"volume": 0.2
+			},
+			{
+				"name": "dsurround:footsteps/floor_squeak/floorsqueak2",
+				"volume": 0.2
+			},
+			{
+				"name": "dsurround:footsteps/floor_squeak/floorsqueak3",
+				"volume": 0.2
+			}
+		]
+	},
+	"footsteps.brush_through": {
+		"ds_category": "player",
+		"subtitle": "dsurround.sound.caption.footsteps.brush_through",
+		"sounds": [
+			"dsurround:footsteps/brush/brush_through1",
+			"dsurround:footsteps/brush/brush_through10",
+			"dsurround:footsteps/brush/brush_through11",
+			"dsurround:footsteps/brush/brush_through2",
+			"dsurround:footsteps/brush/brush_through3",
+			"dsurround:footsteps/brush/brush_through4",
+			"dsurround:footsteps/brush/brush_through5",
+			"dsurround:footsteps/brush/brush_through6",
+			"dsurround:footsteps/brush/brush_through7",
+			"dsurround:footsteps/brush/brush_through8",
+			"dsurround:footsteps/brush/brush_through9"
+		]
+	},
+	"footsteps.leaves_through": {
+		"ds_category": "player",
+		"subtitle": "dsurround.sound.caption.footsteps.leaves_through",
+		"sounds": [
+			"dsurround:footsteps/leaves/leaves_through1",
+			"dsurround:footsteps/leaves/leaves_through2",
+			"dsurround:footsteps/leaves/leaves_through3",
+			"dsurround:footsteps/leaves/leaves_through4",
+			"dsurround:footsteps/leaves/leaves_through5",
+			"dsurround:footsteps/leaves/leaves_through6",
+			"dsurround:footsteps/leaves/leaves_through7"
+		]
+	},
+	"silence": {
+		"sounds": [
+			"dsurround:ambient/silence"
+		]
+	}
+}
