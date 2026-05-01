@@ -212,14 +212,76 @@
 
 ---
 
+## ✅ Phase 7: Capabilities 系统 (100% 完成)
+
+### 已完成 ✅
+- ✅ Dimension Capabilities（维度能力系统）
+  - IDimensionInfo（维度属性接口）
+  - IDimensionInfoEx（扩展接口，天气状态）
+  - DimensionInfo（实现类，~260 行）
+  - 海平面、天空高度、云高度
+  - 天气、极光、雾、光晕标志
+  - 雨强度追踪（目标/当前/最小/最大）
+  - 雷电计时器
+  - NBT 序列化
+- ✅ Season Capabilities（季节能力系统）
+  - ISeasonInfo（季节信息接口）
+  - SeasonInfo（默认实现，~150 行）
+  - SeasonInfoNether（地狱特化实现）
+  - SeasonType（季节枚举：春夏秋冬）
+  - TemperatureRating（温度等级：冰冷到炎热）
+  - PrecipitationType（降水类型：雨/雪/沙尘）
+  - 温度查询、降水类型判断
+  - 冰冻和霜冻呼吸检查
+- ✅ Entity Capabilities（实体能力系统）
+  - IEntityData（实体行为数据接口）
+  - IEntityDataSettable（可设置接口）
+  - EntityData（实现类，~110 行）
+  - EntityDataTables（AI 目标评估，~140 行）
+  - 攻击/逃跑状态追踪
+  - AI 目标类型映射（攻击/逃跑）
+  - 网络同步支持（脏标志）
+  - NBT 序列化
+- ✅ EntityFX Capabilities（实体特效能力）
+  - IEntityFX（特效处理器接口）
+  - EntityFXData（简单实现）
+  - 客户端特效处理器存储
+- ✅ 核心系统
+  - CapabilityHandler（中央注册器，~230 行）
+  - EntityCapabilityEvents（实体更新处理）
+  - 使用 CapabilityToken 注册
+  - LazyOptional 能力访问
+  - 自动附加到 Level 和 Entity
+  - 每 5 tick 评估实体状态
+
+### 代码统计
+- **新增代码**: ~1,400 行
+- **新增类**: 16 个
+- **接口**: 5 个
+- **实现类**: 9 个
+- **枚举**: 3 个
+- **事件处理器**: 2 个
+
+### Git 提交
+- Commit [待提交]: Phase 7 - Capabilities system implementation
+
+### 关键变化（1.12.2 → 1.20.1）
+- **注册**: `@CapabilityInject` → `CapabilityToken<>()`
+- **访问**: `getCapability(CAP, null)` → `getCapability(CAP).orElse(null)`
+- **NBT**: `NBTTagCompound` → `CompoundTag`
+- **AI 系统**: 反射访问 → `GoalSelector.getRunningGoals()` 公共 API
+- **提供者**: 自定义提供者 + `LazyOptional<T>`
+
+---
+
 ## 📊 总体统计
 
 ### 代码量
-- **总新增代码**: ~8,560 行
-- **总新增类**: 73 个
+- **总新增代码**: ~9,960 行
+- **总新增类**: 89 个
 - **总 Mixin**: 2 个
 - **总资源文件**: 3 个 JSON + 1 个 README + 24 个纹理 + 2 个 Shader
-- **总文档**: 6,000+ 行
+- **总文档**: 7,500+ 行
 
 ### Git 历史
 ```

@@ -79,6 +79,18 @@ public class MathStuff {
         return v < min ? min : Math.min(v, max);
     }
 
+    public static int clamp(int v, int min, int max) {
+        return v < min ? min : Math.min(v, max);
+    }
+
+    public static float clamp(float v, float min, float max) {
+        return v < min ? min : Math.min(v, max);
+    }
+
+    public static double clamp(double v, double min, double max) {
+        return v < min ? min : Math.min(v, max);
+    }
+
     public static double exp(final double val) {
         final long tmp = (long) (1512775 * val + (1072693248 - 60801));
         return Double.longBitsToDouble(tmp << 32);
