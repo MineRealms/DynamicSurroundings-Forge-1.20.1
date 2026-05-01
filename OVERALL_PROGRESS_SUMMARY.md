@@ -73,7 +73,7 @@
 
 ---
 
-## 🔄 Phase 4: 天气效果系统 (40% 完成)
+## 🔄 Phase 4: 天气效果系统 (60% 完成)
 
 ### 已完成 ✅
 - ✅ 核心天气状态管理（Weather.java, Tracker 系统）
@@ -89,25 +89,32 @@
   - 8 个雨纹理（calm 到 torrential）
   - 8 个雪纹理（calm 到 torrential）
   - 8 个沙尘纹理（calm 到 torrential）
-
-### 进行中 🔄
-- ⏳ 天气粒子系统（复杂，需要大量渲染代码）
-- ⏳ 天气渲染系统（StormRenderer 移植）
+- ✅ 雷电效果系统（ThunderEvent, ThunderManager）
+  - 背景环境雷声生成
+  - 基于强度的雷电频率
+  - 距离音量计算
+  - 闪电闪光效果
+- ✅ 天气粒子系统（3 种粒子类型）
+  - RainSplashParticle（雨滴飞溅）
+  - SnowParticle（雪花飘落）
+  - DustParticle（沙尘暴）
 
 ### 待实现 📋
-- ⏳ 雷电效果系统（ThunderEvent, 音效, 闪光）
+- ⏳ 天气渲染系统（StormRenderer 移植）
 - ⏳ 服务器端天气生成器（多人同步）
 - ⏳ 网络同步（PacketThunder, WeatherUpdate）
 
 ### 代码统计
-- **新增代码**: ~700 行
-- **新增类**: 5 个
+- **新增代码**: ~1,300 行
+- **新增类**: 10 个
 - **纹理资源**: 24 个 PNG
-- **修改文件**: 2 个
+- **修改文件**: 3 个
 
 ### Git 提交
-- Commit 7637a1a: Phase 4 Part 3 - Weather texture assets
-- Commit 9715e36: Phase 4 Part 2 - Weather fog effects
+- Commit 74cd7c7: Phase 4 Part 5 - Weather particle system
+- Commit 66f3636: Phase 4 Part 4 - Thunder and lightning effects
+- Commit 7c157da: Phase 4 Part 3 - Weather texture assets
+- Commit [前一个]: Phase 4 Part 2 - Weather fog effects
 - Commit [前一个]: Phase 4 Part 1 - Core weather state management
 
 ---
@@ -115,8 +122,8 @@
 ## 📊 总体统计
 
 ### 代码量
-- **总新增代码**: ~5,200 行
-- **总新增类**: 47 个
+- **总新增代码**: ~5,800 行
+- **总新增类**: 50 个
 - **总 Mixin**: 1 个
 - **总资源文件**: 3 个 JSON + 1 个 README + 24 个纹理
 - **总文档**: 3,500+ 行
