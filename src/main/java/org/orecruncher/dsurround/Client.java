@@ -27,6 +27,7 @@ import org.orecruncher.dsurround.runtime.ConditionEvaluator;
 import org.orecruncher.dsurround.runtime.IConditionEvaluator;
 import org.orecruncher.dsurround.sound.IAudioPlayer;
 import org.orecruncher.dsurround.sound.MinecraftAudioPlayer;
+import org.orecruncher.dsurround.weather.Weather;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -100,6 +101,7 @@ public final class Client {
                 .registerSingleton(Config.particleTweaks)
                 .registerSingleton(Config.compassAndClockOptions)
                 .registerSingleton(Config.otherOptions)
+                .registerSingleton(Config.weather)
                 .registerSingleton(IConditionEvaluator.class, ConditionEvaluator.class)
                 .registerSingleton(IVersionChecker.class, VersionChecker.class)
                 .registerSingleton(ITagLibrary.class, TagLibrary.class)
@@ -167,6 +169,9 @@ public final class Client {
     }
 
     private void onConnect(Minecraft minecraftClient) {
+        // Initialize weather system (assume no server-side mod for now)
+        Weather.register(false);
+
         // Display version information when joining a game and when a chat window is available.
         try {
             var versionQueryResult = this.versionInfo.get();
@@ -185,11 +190,17 @@ public final class Client {
     }
 
     private void onDisconnect(Minecraft minecraftClient) {
+        // Unregister weather system
+        Weather.unregister();
+
         // Clear entity effects when disconnecting
         EntityEffectsManager.getInstance().clear();
     }
 
     private void onTick(Minecraft minecraftClient) {
+        // Update weather system
+        Weather.update();
+
         // Update block effects system
         BlockEffectsHandler.getInstance().onTick();
 

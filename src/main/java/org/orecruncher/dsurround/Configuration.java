@@ -50,6 +50,10 @@ public class Configuration extends ConfigurationData {
     public final CompassAndClockOptions compassAndClockOptions = new CompassAndClockOptions();
 
     @Property
+    @Comment("Configuration options for weather effects")
+    public final WeatherEffects weather = new WeatherEffects();
+
+    @Property
     @Comment("Configuration options for other things")
     public final OtherOptions otherOptions = new OtherOptions();
 
@@ -327,5 +331,62 @@ public class Configuration extends ConfigurationData {
         @Property
         @Comment("Enable/disable playing random sound at the Minecraft finish loading to main screen")
         public boolean playRandomSoundOnStartup = true;
+    }
+
+    public static class WeatherEffects {
+        @Property
+        @Comment("Enable/disable use of vanilla rain rendering and sounds")
+        public boolean doVanillaRain = false;
+
+        @Property
+        @Comment("Enable/disable use of vanilla rain sound instead of Dynamic Surroundings' rain sound")
+        public boolean useVanillaRainSound = false;
+
+        @Property
+        @EnumType(WaterRippleStyle.class)
+        @Comment("The style of water ripple to render when rain hits water")
+        public WaterRippleStyle rainRippleStyle = WaterRippleStyle.PIXELATED_CIRCLE;
+
+        @Property
+        @Comment("Enable/disable background thunder sounds during storms")
+        public boolean allowBackgroundThunder = true;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 1.0D)
+        @Comment("Minimum rain intensity threshold for thunder to occur (0.0 = always, 1.0 = never)")
+        public double stormThunderThreshold = 0.75D;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 1.0D)
+        @Comment("Default minimum rain strength for storms")
+        public double defaultMinRainStrength = 0.0D;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 1.0D)
+        @Comment("Default maximum rain strength for storms")
+        public double defaultMaxRainStrength = 1.0D;
+
+        @Property
+        @Comment("Enable/disable Netherrack and Magma block splash effects in the Nether")
+        public boolean enableNetherrackMagmaSplashEffect = true;
+
+        @Property
+        @Comment("Enable/disable weather fog effects (fog density increases with storm intensity)")
+        public boolean enableWeatherFog = true;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 1.0D)
+        @Comment("Amount to reduce fog start distance at maximum storm intensity (0.0 = no change, 1.0 = maximum reduction)")
+        public double fogStartReduction = 0.9D;
+
+        @Property
+        @Slider
+        @DoubleRange(min = 0.0D, max = 1.0D)
+        @Comment("Amount to reduce fog end distance at maximum storm intensity (0.0 = no change, 1.0 = maximum reduction)")
+        public double fogEndReduction = 0.4D;
     }
 }
