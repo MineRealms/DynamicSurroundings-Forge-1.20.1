@@ -267,7 +267,7 @@ public final class BiomeInfo implements Comparable<BiomeInfo>, IBiomeSoundProvid
         builder.append("\n").append(getTraits().toString());
 
         if (this.fogColor != null) {
-            builder.append("\nfogColor: ").append(this.fogColor.formatValue());
+            builder.append("\nfogColor: ").append(String.format("#%06X", this.fogColor.getValue()));
         }
 
         if (!this.loopSounds.isEmpty()) {

@@ -1,27 +1,49 @@
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
 
+> Configure project :
+MixinGradle is skipping eclipse integration, extension not found
+Java: 17.0.18, JVM: 17.0.18+8 (Eclipse Adoptium), Arch: amd64
+
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createMcpToSrg UP-TO-DATE
+
+> Task :compileJava
+注: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7.38)
+注: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+注: Loading searge mappings from H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\createMcpToSrg\output.tsrg
+注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
+H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientChunkManager.java:10: 错误: Could not locate @Accessor target storage in target net.minecraft.client.multiplayer.ClientChunkCache
+    @Accessor("storage")
+    ^
+注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-mappings.tsrg
+H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\src\main\java\org\orecruncher\dsurround\mixins\core\MixinClientChunkManager.java:11: 错误: ClientChunkCache.Storage在ClientChunkCache中不是公共的; 无法从外部程序包中对其进行访问
+    ClientChunkCache.Storage dsurround_getClientChunkMap();
+                    ^
+注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
+注: Writing refmap to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to H:\MinecraftMods\DynamicSurroundingsFroge-1.20.1\build\tmp\compileJava\compileJava-mappings.tsrg
+2 个错误
+
+> Task :compileJava FAILED
+
 FAILURE: Build failed with an exception.
 
-* Where:
-Build file 'H:\MinecraftMods\Glodium\build.gradle' line: 4
-
 * What went wrong:
-Plugin [id: 'net.neoforged.gradle', version: '[6.0.13, 6.2)'] was not found in any of the following sources:
-
-- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
-- Included Builds (No included builds contain this plugin)
-- Plugin Repositories (could not resolve plugin artifact 'net.neoforged.gradle:net.neoforged.gradle.gradle.plugin:[6.0.13, 6.2)')
-  Searched in the following repositories:
-    Gradle Central Plugin Repository
-    MavenRepo
-    NeoForge(https://maven.neoforged.net/releases)
-    Mixin(https://repo.spongepowered.org/maven)
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
 
 * Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
+> Run with --info option to get more log output.
 > Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
 
-BUILD FAILED in 24s
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 27s
+4 actionable tasks: 2 executed, 2 up-to-date

@@ -173,23 +173,23 @@ public class IndividualSoundControlListEntry extends ContainerObjectSelectionLis
         int rightMargin = rowLeft + rowWidth;
         this.volume.setX(rightMargin - this.volume.getWidth());
         this.volume.setY(rowTop);
-        this.volume.height = rowHeight;
+        ((org.orecruncher.dsurround.mixins.core.MixinAbstractWidgetAccessor) this.volume).dsurround_setHeight(rowHeight);
         rightMargin -= this.volume.getWidth() + CONTROL_SPACING;
 
         if (this.playButton != null) {
             this.playButton.setX(rightMargin - this.playButton.getWidth());
             this.playButton.setY(rowTop);
-            this.playButton.height = rowHeight;
+            ((org.orecruncher.dsurround.mixins.core.MixinAbstractWidgetAccessor) this.playButton).dsurround_setHeight(rowHeight);
             rightMargin -= this.playButton.getWidth() + CONTROL_SPACING;
         }
 
         this.blockButton.setX(rightMargin - this.blockButton.getWidth());
         this.blockButton.setY(rowTop);
-        this.blockButton.height = rowHeight;
+        ((org.orecruncher.dsurround.mixins.core.MixinAbstractWidgetAccessor) this.blockButton).dsurround_setHeight(rowHeight);
         rightMargin -= this.blockButton.getWidth() + CONTROL_SPACING;
 
         this.cullButton.setX(rightMargin - this.cullButton.getWidth());
-        this.cullButton.height = rowHeight;
+        ((org.orecruncher.dsurround.mixins.core.MixinAbstractWidgetAccessor) this.cullButton).dsurround_setHeight(rowHeight);
         this.cullButton.setY(rowTop);
 
         for (final AbstractWidget w : this.children)
