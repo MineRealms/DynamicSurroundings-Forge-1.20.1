@@ -1,6 +1,6 @@
 # Phase 4: Weather Effects System - Progress Report
 
-## Status: In Progress (40% Complete)
+## Status: In Progress (50% Complete)
 
 ### Completed Components ✅
 
@@ -63,14 +63,28 @@
   - 8 dust textures: dust_calm.png through dust_torrential.png
   - Located in: assets/dsurround/textures/environment/
 
+#### 6. Thunder and Lightning Effects
+- **ThunderEvent.java** - Thunder event data structure
+  - Dimension tracking
+  - Flash flag for lightning effects
+  - Position-based thunder location
+  
+- **ThunderManager.java** - Thunder effect manager
+  - Background ambient thunder generation
+  - Intensity-based thunder frequency
+  - Distance-based volume calculation
+  - Lightning flash triggering
+  - Configurable thunder threshold
+  - Integrated into Weather.update() lifecycle
+
 ### Code Statistics (Current)
-- **New Files**: 5 Java files + 24 texture assets
-- **Lines of Code**: ~700
+- **New Files**: 7 Java files + 24 texture assets
+- **Lines of Code**: ~900
 - **Build Status**: ✅ SUCCESS
 
 ---
 
-## Remaining Work (60%)
+## Remaining Work (50%)
 
 ### High Priority
 
@@ -95,11 +109,13 @@
 - [ ] WaterRippleParticle.java - Water ripple effects
 
 #### 4. Thunder & Lightning
-- [ ] ThunderEvent.java - Thunder event system
-- [ ] Lightning flash effects
-- [ ] Ambient thunder sounds
-- [ ] Position-based thunder
-- [ ] Network synchronization
+- [x] ThunderEvent.java - Thunder event system
+- [x] ThunderManager.java - Thunder effect manager
+- [x] Lightning flash effects
+- [x] Ambient thunder sounds
+- [x] Position-based thunder
+- [x] Integrated into Weather lifecycle
+- [ ] Network synchronization (for multiplayer)
 
 #### 5. Weather Fog
 - [x] WeatherFogHandler.java - Fog density calculation
@@ -182,9 +198,9 @@
 
 1. ~~Implement weather fog effects~~ ✅ DONE
 2. ~~Copy texture assets from 1.12.2~~ ✅ DONE
-3. Implement weather particle systems
-4. Implement weather rendering system
-5. Implement thunder and lightning effects
+3. ~~Implement thunder and lightning effects~~ ✅ DONE
+4. Implement weather particle systems
+5. Implement weather rendering system
 6. Implement server-side weather generators
 7. Implement networking for server sync
 8. Test and verify all features
@@ -193,8 +209,8 @@
 
 ## Estimated Completion
 
-- **Current Progress**: 40%
-- **Remaining Work**: ~1,500 lines of code
+- **Current Progress**: 50%
+- **Remaining Work**: ~1,200 lines of code
 - **Estimated Time**: 2-3 hours of focused work
 - **Complexity**: High (rendering, particles, networking)
 
@@ -202,19 +218,14 @@
 
 ## Git Commit Plan
 
-**Current Commit**: Phase 4 Part 1 - Core weather state management and configuration
-- Weather.java with 9 intensity levels
-- Tracker system (base, simulation, server-driven)
-- Configuration options
-- Client integration
+**Completed Commits**:
+- Part 1: Core weather state management and configuration ✅
+- Part 2: Weather fog effects ✅
+- Part 3: Weather texture assets ✅
+- Part 4: Thunder and lightning effects ✅
 
-**Next Commit**: Phase 4 Part 3 - Weather texture assets
-- 24 weather textures (rain, snow, dust) for all 8 intensity levels
-- Copied from 1.12.2 source
+**Next Commit**: Phase 4 Part 5 - Weather particles and rendering system
 
 **Future Commits**:
-- Part 4: Weather particles and splash effects
-- Part 3: Weather particles and splash effects
-- Part 4: Weather rendering system
-- Part 5: Thunder, lightning, and networking
-- Part 6: Server-side generators and final testing
+- Part 6: Server-side generators and networking
+- Part 7: Final testing and verification

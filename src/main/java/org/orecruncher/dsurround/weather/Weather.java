@@ -32,6 +32,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.orecruncher.dsurround.Client;
+import org.orecruncher.dsurround.weather.thunder.ThunderManager;
 import org.orecruncher.dsurround.weather.tracker.ServerDrivenTracker;
 import org.orecruncher.dsurround.weather.tracker.SimulationTracker;
 import org.orecruncher.dsurround.weather.tracker.Tracker;
@@ -144,6 +145,9 @@ public class Weather {
     // Start with the simulation tracker (client-side prediction)
     private static Tracker tracker = new SimulationTracker();
 
+    // Thunder manager for handling thunder effects
+    private static ThunderManager thunderManager = new ThunderManager();
+
     private static Level getWorld() {
         return Minecraft.getInstance().level;
     }
@@ -198,6 +202,7 @@ public class Weather {
 
     public static void update() {
         tracker.update();
+        thunderManager.tick();
     }
 
     /**
@@ -220,6 +225,7 @@ public class Weather {
      */
     public static void unregister() {
         tracker = new SimulationTracker();
+        thunderManager.reset();
     }
 
     public static String diagnostic() {
