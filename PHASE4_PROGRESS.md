@@ -1,6 +1,6 @@
 # Phase 4: Weather Effects System - Progress Report
 
-## Status: In Progress (35% Complete)
+## Status: In Progress (40% Complete)
 
 ### Completed Components ✅
 
@@ -56,14 +56,21 @@
   - Respects enableWeatherFog config option
   - Integrated into ForgeServiceImpl event bus
 
+#### 5. Weather Texture Assets
+- **24 weather textures** copied from 1.12.2
+  - 8 rain textures: rain_calm.png through rain_torrential.png
+  - 8 snow textures: snow_calm.png through snow_torrential.png
+  - 8 dust textures: dust_calm.png through dust_torrential.png
+  - Located in: assets/dsurround/textures/environment/
+
 ### Code Statistics (Current)
-- **New Files**: 5
+- **New Files**: 5 Java files + 24 texture assets
 - **Lines of Code**: ~700
 - **Build Status**: ✅ SUCCESS
 
 ---
 
-## Remaining Work (65%)
+## Remaining Work (60%)
 
 ### High Priority
 
@@ -116,7 +123,7 @@
 - [ ] Server-client synchronization
 
 #### 8. Texture Assets
-- [ ] Copy 24 weather textures from 1.12.2
+- [x] Copy 24 weather textures from 1.12.2
   - 8 rain textures (calm to torrential)
   - 8 snow textures (calm to torrential)
   - 8 dust textures (calm to torrential)
@@ -174,7 +181,7 @@
 ## Next Steps
 
 1. ~~Implement weather fog effects~~ ✅ DONE
-2. Copy texture assets from 1.12.2
+2. ~~Copy texture assets from 1.12.2~~ ✅ DONE
 3. Implement weather particle systems
 4. Implement weather rendering system
 5. Implement thunder and lightning effects
@@ -186,7 +193,7 @@
 
 ## Estimated Completion
 
-- **Current Progress**: 35%
+- **Current Progress**: 40%
 - **Remaining Work**: ~1,500 lines of code
 - **Estimated Time**: 2-3 hours of focused work
 - **Complexity**: High (rendering, particles, networking)
@@ -201,13 +208,12 @@
 - Configuration options
 - Client integration
 
-**Next Commit**: Phase 4 Part 2 - Weather fog effects
-- WeatherFogHandler.java with Forge event integration
-- Configurable fog reduction based on weather intensity
-- Integrated into ForgeServiceImpl
+**Next Commit**: Phase 4 Part 3 - Weather texture assets
+- 24 weather textures (rain, snow, dust) for all 8 intensity levels
+- Copied from 1.12.2 source
 
 **Future Commits**:
-- Part 3: Texture assets
+- Part 4: Weather particles and splash effects
 - Part 3: Weather particles and splash effects
 - Part 4: Weather rendering system
 - Part 5: Thunder, lightning, and networking
