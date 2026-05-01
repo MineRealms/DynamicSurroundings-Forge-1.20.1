@@ -81,12 +81,14 @@ public class EffectManager {
         // EnvironStateHandler goes first - it sets up state for the rest
         register(new EnvironStateHandler());
 
+        // Register aurora handler
+        register(new AuroraEffectHandler());
+
         // TODO: Register other handlers as they are implemented
         // register(new AreaBlockEffectsHandler());
         // register(new FogHandler());
         // register(new ParticleSystemHandler());
         // register(new BiomeSoundEffectsHandler());
-        // register(new AuroraEffectHandler());
         // register(new WeatherHandler());
         // register(new FxHandler());
         // register(SoundEffectHandler.INSTANCE);

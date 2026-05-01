@@ -31,6 +31,8 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.orecruncher.dsurround.Constants;
+import org.orecruncher.dsurround.client.handlers.AuroraEffectHandler;
+import org.orecruncher.dsurround.client.handlers.EffectManager;
 
 /**
  * Handles rendering of aurora effects.
@@ -39,17 +41,6 @@ import org.orecruncher.dsurround.Constants;
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AuroraRenderHandler {
 
-    private static AuroraFactory auroraFactory;
-
-    /**
-     * Set the aurora factory to use for rendering.
-     *
-     * @param factory The aurora factory
-     */
-    public static void setAuroraFactory(AuroraFactory factory) {
-        auroraFactory = factory;
-    }
-
     /**
      * Render aurora effects during the appropriate render stage.
      *
@@ -57,18 +48,19 @@ public class AuroraRenderHandler {
      */
     @SubscribeEvent
     public static void onRenderLevelStage(RenderLevelStageEvent event) {
-        if (auroraFactory == null) {
+        // Only render if connected to a world
+        if (!EffectManager.isConnected()) {
             return;
         }
 
         // Render auroras after weather effects
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_WEATHER) {
-            PoseStack poseStack = event.getPoseStack();
-            float partialTick = event.getPartialTick();
-
-            poseStack.pushPose();
-            auroraFactory.render(poseStack, partialTick);
-            poseStack.popPose();
+            AuroraEffectHandler handler = EffectManager.instance().lookupService(AuroraEffectHandler.class);
+            if (handler != null) {
+                PoseStack poseStack = event.getPoseStack();
+                float partialTick = event.getPartialTick();
+                handler.render(poseStack, partialTick);
+            }
         }
     }
 }

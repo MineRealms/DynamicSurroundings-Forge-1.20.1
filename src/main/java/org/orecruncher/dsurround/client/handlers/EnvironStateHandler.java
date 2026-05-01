@@ -26,8 +26,11 @@ package org.orecruncher.dsurround.client.handlers;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -92,12 +95,28 @@ public class EnvironStateHandler extends EffectHandlerBase {
             return data.dimensionName;
         }
 
+        public static ResourceLocation getDimensionId() {
+            Level world = getWorld();
+            return world != null ? world.dimension().location() : null;
+        }
+
         public static Player getPlayer() {
             return Minecraft.getInstance().player;
         }
 
         public static Level getWorld() {
             return Minecraft.getInstance().level;
+        }
+
+        public static long getTimeOfDay() {
+            Level world = getWorld();
+            return world != null ? world.getDayTime() % 24000L : 0;
+        }
+
+        public static Biome getPlayerBiome() {
+            Level world = getWorld();
+            if (world == null) return null;
+            return world.getBiome(getPlayerPosition()).value();
         }
 
         public static BlockPos getPlayerPosition() {

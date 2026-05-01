@@ -124,7 +124,8 @@
 - **修改文件**: 6 个
 
 ### Git 提交
-- Commit [待提交]: Phase 4 Part 6 - Rendering, server generator, network sync
+- Commit ff5ebab: Fix compilation errors for 1.20.1 API compatibility
+- Commit cf9839f: Phase 4 Part 6 - Rendering, server generator, network sync
 - Commit 74cd7c7: Phase 4 Part 5 - Weather particle system
 - Commit 66f3636: Phase 4 Part 4 - Thunder and lightning effects
 - Commit 7c157da: Phase 4 Part 3 - Weather texture assets
@@ -208,7 +209,7 @@
 - **修改文件**: 3 个
 
 ### Git 提交
-- Commit [待提交]: Phase 6 - Aurora system implementation
+- Commit b9614aa: Phase 6 - Aurora system implementation
 
 ---
 
@@ -263,7 +264,7 @@
 - **事件处理器**: 2 个
 
 ### Git 提交
-- Commit [待提交]: Phase 7 - Capabilities system implementation
+- Commit 7b19521: Phase 7 - Capabilities system implementation
 
 ### 关键变化（1.12.2 → 1.20.1）
 - **注册**: `@CapabilityInject` → `CapabilityToken<>()`
@@ -304,7 +305,7 @@
 - **静态 API 方法**: 20+
 
 ### Git 提交
-- Commit [待提交]: Phase 8 - Client handlers system
+- Commit 5a02cd7: Phase 8 - Client handlers system
 
 ### 关键变化（1.12.2 → 1.20.1）
 - **事件系统**: `@SubscribeEvent` → `@Mod.EventBusSubscriber`
@@ -340,6 +341,7 @@ da45241 - Phase 7: Fix config loading timing issue
 
 ### 编译状态
 ✅ **BUILD SUCCESSFUL** - 所有代码编译通过，无错误
+- 最新修复: Commit ff5ebab (2026-05-02) - 修复了 Weather、Aurora、Shader、Config 系统的 1.20.1 API 兼容性问题
 
 ---
 
