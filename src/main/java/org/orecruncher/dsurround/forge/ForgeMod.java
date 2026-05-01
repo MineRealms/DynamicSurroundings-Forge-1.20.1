@@ -33,12 +33,6 @@ public final class ForgeMod {
         // Boot the mod on the main thread
         event.enqueueWork(() -> {
             this.client.initializeClient();
-
-            // Register client commands if configured
-            if (Client.Config.logging.registerCommands) {
-                Library.LOGGER.info("Registering client commands");
-                // TODO: Register Forge commands
-            }
         });
     }
 }
