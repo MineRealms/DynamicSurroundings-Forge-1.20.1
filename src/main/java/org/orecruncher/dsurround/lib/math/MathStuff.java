@@ -116,4 +116,16 @@ public class MathStuff {
         return num <= 0 ? 0F : Math.min(num, 1F);
     }
 
+    public static int floor(double value) {
+        return (int) Math.floor(value);
+    }
+
+    public static float cos(float value) {
+        return (float) Math.cos(value);
+    }
+
+    public static float sin(float value) {
+        return (float) Math.sin(value);
+    }
+
 }
