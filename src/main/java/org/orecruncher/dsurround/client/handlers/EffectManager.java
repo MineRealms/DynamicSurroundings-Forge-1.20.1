@@ -81,18 +81,22 @@ public class EffectManager {
         // EnvironStateHandler goes first - it sets up state for the rest
         register(new EnvironStateHandler());
 
-        // Register aurora handler
+        // Register visual effect handlers
         register(new AuroraEffectHandler());
+        register(new ParticleSystemHandler());
+        register(new FxHandler());
 
-        // TODO: Register other handlers as they are implemented
-        // register(new AreaBlockEffectsHandler());
-        // register(new FogHandler());
-        // register(new ParticleSystemHandler());
-        // register(new BiomeSoundEffectsHandler());
-        // register(new WeatherHandler());
-        // register(new FxHandler());
-        // register(SoundEffectHandler.INSTANCE);
-        // register(new DiagnosticHandler());
+        // Register weather handler
+        register(new WeatherHandler());
+
+        // Register sound handlers
+        register(new BiomeSoundEffectsHandler());
+
+        // TODO: Register remaining handlers as they are fully implemented
+        // register(new AreaBlockEffectsHandler()); // Needs block effect system
+        // register(new FogHandler()); // Needs fog calculation system
+        // register(new SoundEffectHandler()); // Needs sound engine
+        // register(new DiagnosticHandler()); // Needs diagnostic event system
 
         LOGGER.info("Initialized %d effect handlers", this.effectHandlers.size());
     }
