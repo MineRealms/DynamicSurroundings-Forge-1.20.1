@@ -33,6 +33,12 @@ public final class Library {
     public static void initialize() {
         LOGGER.info("Library initializing");
 
+        // Set debug mode from constants
+        if (Constants.DEBUG_MODE) {
+            ((ModLog) LOGGER).setDebug(true);
+            LOGGER.info("Debug mode ENABLED - detailed logging active");
+        }
+
         // Do this first so the rest of the library can get dependencies
         configureServiceDependencies();
 

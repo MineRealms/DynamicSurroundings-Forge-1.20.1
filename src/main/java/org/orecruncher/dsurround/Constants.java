@@ -19,6 +19,13 @@ public final class Constants {
     public static final String MOD_ID = "dsurround";
 
     /**
+     * Debug mode flag - set to true to enable detailed debug logging
+     * This will log additional information about mod operations, errors, and state changes.
+     * WARNING: Debug mode can generate a lot of log output. Use only for troubleshooting.
+     */
+    public static final boolean DEBUG_MODE = true;
+
+    /**
      * ID's of mods that Dynamic Surroundings has an interest for disabling certain features.
      */
     // Brush step sound effect

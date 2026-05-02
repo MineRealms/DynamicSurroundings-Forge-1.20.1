@@ -12,13 +12,23 @@ import java.util.regex.Pattern;
 public final class ModLog implements IModLog {
 
     private static final Pattern REGEX_SPLIT = Pattern.compile("\\n");
+    private static final String PREFIX_FORMAT = "[%s] %s";
 
     private final Logger logger;
+    private final String prefix;
     private boolean debugging;
     private int traceMask;
 
     public ModLog(String modId) {
         this.logger = LoggerFactory.getLogger(Objects.requireNonNull(modId));
+        this.prefix = modId.toUpperCase();
+    }
+
+    /**
+     * Add prefix to message for easier log filtering
+     */
+    private String addPrefix(String message) {
+        return String.format(PREFIX_FORMAT, this.prefix, message);
     }
 
     private static void outputLines(final Consumer<String> out, final String format, @Nullable final Object... params) {
@@ -50,7 +60,7 @@ public final class ModLog implements IModLog {
 
     @Override
     public void info(final String msg, @Nullable final Object... params) {
-        outputLines(this.logger::info, msg, params);
+        outputLines(this.logger::info, addPrefix(msg), params);
     }
 
     @Override
@@ -60,7 +70,7 @@ public final class ModLog implements IModLog {
 
     @Override
     public void warn(final String msg, @Nullable final Object... params) {
-        outputLines(this.logger::warn, msg, params);
+        outputLines(this.logger::warn, addPrefix(msg), params);
     }
 
     @Override
@@ -71,7 +81,7 @@ public final class ModLog implements IModLog {
     @Override
     public void debug(final String msg, @Nullable final Object... params) {
         if (isDebugging())
-            outputLines(this.logger::info, msg, params);
+            outputLines(this.logger::info, addPrefix("[DEBUG] " + msg), params);
     }
 
     @Override
@@ -83,7 +93,7 @@ public final class ModLog implements IModLog {
     @Override
     public void debug(final int mask, final String msg, @Nullable final Object... params) {
         if (isDebugging() && testTrace(mask))
-            outputLines(this.logger::info, msg, params);
+            outputLines(this.logger::info, addPrefix("[DEBUG] " + msg), params);
     }
 
     @Override
@@ -94,12 +104,27 @@ public final class ModLog implements IModLog {
 
     @Override
     public void error(final Throwable e, final String msg, @Nullable final Object... params) {
-        outputLines(this.logger::error, msg, params);
-        this.logger.error(e.toString());
+        outputLines(this.logger::error, addPrefix(msg), params);
+        this.logger.error(addPrefix("Exception: " + e.getClass().getName() + ": " + e.getMessage()));
+
+        // Print stack trace for debugging
+        if (isDebugging()) {
+            for (StackTraceElement element : e.getStackTrace()) {
+                this.logger.error(addPrefix("  at " + element.toString()));
+            }
+        }
     }
 
     @Override
     public void error(final Throwable e, final Supplier<String> message) {
         this.error(e, message.get());
+    }
+
+    /**
+     * Log an error with full stack trace
+     */
+    public void errorWithStackTrace(final Throwable e, final String msg, @Nullable final Object... params) {
+        outputLines(this.logger::error, addPrefix(msg), params);
+        this.logger.error(addPrefix("Exception details:"), e);
     }
 }
