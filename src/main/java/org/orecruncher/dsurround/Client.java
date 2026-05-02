@@ -30,6 +30,7 @@ import org.orecruncher.dsurround.sound.IAudioPlayer;
 import org.orecruncher.dsurround.sound.MinecraftAudioPlayer;
 import org.orecruncher.dsurround.weather.Weather;
 import org.orecruncher.dsurround.client.handlers.EffectManager;
+import org.orecruncher.dsurround.client.hud.GuiHUDHandler;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -171,6 +172,9 @@ public final class Client {
         // Initialize shader system
         ShaderManager.initialize();
 
+        // Initialize HUD system
+        GuiHUDHandler.register();
+
         this.logger.info("[%s] Finalization complete", Constants.MOD_ID);
     }
 
@@ -204,6 +208,9 @@ public final class Client {
 
         // Unregister weather system
         Weather.unregister();
+
+        // Unregister HUD system
+        GuiHUDHandler.unregister();
 
         // Clear entity effects when disconnecting
         EntityEffectsManager.getInstance().clear();
