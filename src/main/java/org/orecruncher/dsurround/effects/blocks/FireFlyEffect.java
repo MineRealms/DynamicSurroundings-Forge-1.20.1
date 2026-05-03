@@ -40,8 +40,14 @@ public class FireFlyEffect extends BlockEffect {
             return;
         }
 
+        // Get block shape - skip if empty
+        var shape = state.getShape(level, pos);
+        if (shape.isEmpty()) {
+            return;
+        }
+
         // Get block bounding box center
-        AABB box = state.getShape(level, pos).bounds();
+        AABB box = shape.bounds();
         Vec3 center = box.getCenter();
 
         double x = pos.getX() + center.x;

@@ -120,7 +120,7 @@ public final class SoundFXUtils {
         // Need to offset sound toward player if it is in a solid block
         final Vec3 soundPos = offsetPositionIfSolid(ctx.world, this.source.getPosition(), ctx.playerEyePosition);
 
-        final float absorptionCoeff = Effects.GLOBAL_BLOCK_ABSORPTION * 3.0F;
+        final float absorptionCoeff = Effects.GLOBAL_BLOCK_ABSORPTION * 3.0F * (float) CONFIG.occlusionStrength;
         final float airAbsorptionFactor = calculateWeatherAbsorption(ctx, soundPos, ctx.playerEyePosition);
         final float occlusionAccumulation = calculateOcclusion(ctx, soundPos, ctx.playerEyePosition);
         final float sendCoeff = -occlusionAccumulation * absorptionCoeff;

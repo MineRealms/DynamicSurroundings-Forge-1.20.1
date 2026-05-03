@@ -15,6 +15,9 @@ import java.util.random.RandomGeneratorFactory;
 final class JavaRandomizer implements IRandomizer {
 
     // https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/random/package-summary.html
+    // Using L64X128MixRandom as it's guaranteed to be available in all Java 17+ environments
+    // Xoroshiro128PlusPlus is not available in some JVM configurations
+    public static final String DEFAULT_ALGORITHM = "L64X128MixRandom";
     public static final String XOROSHIRO_128_PLUS_PLUS = "Xoroshiro128PlusPlus";
 
     private final RandomGenerator generator;
@@ -29,7 +32,7 @@ final class JavaRandomizer implements IRandomizer {
 
     @Override
     public @NotNull RandomSource fork() {
-        return new JavaRandomizer(XOROSHIRO_128_PLUS_PLUS, this.nextLong());
+        return new JavaRandomizer(DEFAULT_ALGORITHM, this.nextLong());
     }
 
     @Override

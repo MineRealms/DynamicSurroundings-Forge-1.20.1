@@ -43,8 +43,8 @@ public class ForgeServiceImpl implements IPlatform {
         // Register to Forge event bus for game events
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler(this));
 
-        // Register weather fog handler
-        MinecraftForge.EVENT_BUS.register(new org.orecruncher.dsurround.weather.fog.WeatherFogHandler());
+        // Note: WeatherFogHandler will be registered later by the mod initialization
+        // to avoid circular dependency issues during service loading
     }
 
     @Override

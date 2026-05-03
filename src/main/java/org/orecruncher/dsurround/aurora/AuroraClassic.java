@@ -54,6 +54,9 @@ public class AuroraClassic extends AuroraBase {
         this.band = new AuroraBand(this.random);
         this.bandCount = BAND_COUNT;
         this.offset = BAND_OFFSET;
+
+        // Now that all fields are initialized, generate geometry
+        this.generateGeometry();
     }
 
     @Override

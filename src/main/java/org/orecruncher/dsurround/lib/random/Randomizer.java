@@ -85,8 +85,8 @@ public final class Randomizer implements IRandomizer {
 
     private static IRandomizer getRandomizer() {
         try {
-            Library.LOGGER.info("Creating RandomGenerator '%s'", JavaRandomizer.XOROSHIRO_128_PLUS_PLUS);
-            return new JavaRandomizer(JavaRandomizer.XOROSHIRO_128_PLUS_PLUS);
+            Library.LOGGER.info("Creating RandomGenerator '%s'", JavaRandomizer.DEFAULT_ALGORITHM);
+            return new JavaRandomizer(JavaRandomizer.DEFAULT_ALGORITHM);
         } catch (Exception ex) {
             Library.LOGGER.error(ex, "Unable to create randomizer!");
             Library.LOGGER.info("RandomGenerator factories available:");

@@ -81,16 +81,14 @@ public abstract class AuroraBase implements IAurora {
         this.middleColor = this.preset.getMiddleColor();
         this.bottomColor = this.preset.getBottomColor();
 
-        // Initialize position relative to player
-        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-        Vec3 cameraPos = camera.getPosition();
+        // Aurora position is relative to player, not world space
+        // These are just offsets, not absolute positions
+        this.posX = 0;
+        this.posY = 0;
+        this.posZ = 0;
 
-        this.posX = cameraPos.x;
-        this.posY = cameraPos.y + AuroraUtils.PLAYER_FIXED_Y_OFFSET;
-        this.posZ = cameraPos.z + AuroraUtils.PLAYER_FIXED_Z_OFFSET;
-
-        // Generate geometry
-        this.generateGeometry();
+        // Note: Don't call generateGeometry() here!
+        // It will be called by subclass after their fields are initialized
     }
 
     /**
@@ -129,19 +127,23 @@ public abstract class AuroraBase implements IAurora {
     }
 
     /**
-     * Translate the aurora to follow the player.
+     * Translate the aurora to maintain fixed offset relative to player.
+     * The aurora should appear as a distant sky effect that doesn't move with camera rotation.
      *
      * @param poseStack The pose stack for transformations
      */
     protected void translate(PoseStack poseStack) {
+        // Get camera position to cancel out world translation
         Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
         Vec3 cameraPos = camera.getPosition();
 
-        double transX = this.posX - cameraPos.x;
-        double transY = this.posY - cameraPos.y;
-        double transZ = this.posZ - cameraPos.z;
-
-        poseStack.translate(transX, transY, transZ);
+        // Cancel out the camera's world position so aurora stays fixed relative to player
+        // Then apply fixed offsets for aurora positioning
+        poseStack.translate(
+            -cameraPos.x,  // Cancel X movement
+            AuroraUtils.PLAYER_FIXED_Y_OFFSET - cameraPos.y,  // Fixed height, cancel Y movement
+            AuroraUtils.PLAYER_FIXED_Z_OFFSET - cameraPos.z   // Fixed distance, cancel Z movement
+        );
     }
 
     /**

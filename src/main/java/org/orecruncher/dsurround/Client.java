@@ -126,6 +126,12 @@ public final class Client {
 
         KeyBindings.register();
 
+        // Register weather fog handler to Forge event bus
+        // This must be done after Configuration is registered in DI container
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(
+            new org.orecruncher.dsurround.weather.fog.WeatherFogHandler()
+        );
+
         this.logger.info("[%s] Client initialization complete", Constants.MOD_ID);
     }
 

@@ -129,7 +129,12 @@ public class Configuration extends ConfigurationData {
 
         @Property
         @Comment("Enable/disable sound occlusion processing (sound muffling behind blocks)")
-        public boolean enableOcclusionProcessing = false;
+        public boolean enableOcclusionProcessing = true;
+
+        @Property
+        @DoubleRange(min = 0.5, max = 3.0)
+        @Comment("Sound occlusion strength multiplier (higher = more muffling through walls). Default: 1.0")
+        public double occlusionStrength = 1.0;
 
         @Property
         @IntegerRange(min = 16, max = 64)
@@ -275,6 +280,16 @@ public class Configuration extends ConfigurationData {
         @Property
         @Comment("Enable/disable footstep sounds in first person view")
         public boolean firstPersonFootsteps = true;
+
+        @Property
+        @Comment("Enable/disable footprint visual effects")
+        public boolean enableFootprints = true;
+
+        @Property
+        @Slider
+        @IntegerRange(min = 0, max = 6)
+        @Comment("Footprint style for player (0=SHOE, 1=SQUARE, 2=HORSESHOE, 3=BIRD, 4=PAW, 5=SQUARE_SOLID, 6=LOWRES_SQUARE)")
+        public int footprintStyle = 0;
     }
 
     public static class FootstepAccents {
