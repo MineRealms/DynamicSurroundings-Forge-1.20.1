@@ -52,19 +52,16 @@ public class FootstepGenerator {
     public void onPlayerMove(@NotNull Player player, @NotNull Vec3 movement) {
         // Check if footsteps are enabled
         if (!Client.Config.footsteps.enabled) {
-            Library.LOGGER.info("Footprint: footsteps disabled in config");
             return;
         }
 
         // Only process client-side player
         if (!player.level().isClientSide) {
-            Library.LOGGER.info("Footprint: not client side");
             return;
         }
 
         // Don't play footsteps if player is flying or swimming
         if (player.getAbilities().flying || player.isSwimming() || player.isInWater()) {
-            Library.LOGGER.info("Footprint: player flying/swimming/in water");
             return;
         }
 
@@ -80,17 +77,13 @@ public class FootstepGenerator {
         // Calculate horizontal movement speed
         float movementSpeed = (float) Math.sqrt(movement.x * movement.x + movement.z * movement.z);
 
-        Library.LOGGER.info("Footprint: movementSpeed = %.3f, shouldPlay = %s", movementSpeed, timing.shouldPlayFootstep(player, movementSpeed));
-
         // Check if we should play a footstep
         if (timing.shouldPlayFootstep(player, movementSpeed)) {
             MovementType type = determineMovementType(player);
             playFootstepSound(player, type);
 
             // Generate footprint visual effect
-            Library.LOGGER.info("Footprint: enableFootprints = %s", Client.Config.footsteps.enableFootprints);
             if (Client.Config.footsteps.enableFootprints) {
-                Library.LOGGER.info("Footprint: calling generateFootprint for type %s", type);
                 generateFootprint(player, type);
             }
         }
@@ -237,23 +230,18 @@ public class FootstepGenerator {
      * Generate a footprint visual effect
      */
     private void generateFootprint(@NotNull Player player, @NotNull MovementType type) {
-        Library.LOGGER.info("Footprint: generateFootprint START, type=%s", type);
-
         // Don't generate footprints when jumping or landing (handled separately)
         if (type == MovementType.JUMP || type == MovementType.LAND) {
-            Library.LOGGER.info("Footprint: skipping JUMP/LAND type");
             return;
         }
 
         // Don't generate footprints if player is invisible
         if (player.isInvisible()) {
-            Library.LOGGER.info("Footprint: player is invisible");
             return;
         }
 
         // Get footprint style
         FootprintStyle style = FootprintStyle.getStyle(Client.Config.footsteps.footprintStyle);
-        Library.LOGGER.info("Footprint: style=%s", style);
 
         // Get which foot
         boolean rightFoot = this.isRightFoot.getOrDefault(player.getUUID(), false);
@@ -271,7 +259,6 @@ public class FootstepGenerator {
         // Get Y position (slightly above ground to avoid z-fighting)
         BlockPos footPos = getFootstepPosition(player);
         if (footPos == null) {
-            Library.LOGGER.info("Footprint: footPos is null");
             return;
         }
 
@@ -279,7 +266,6 @@ public class FootstepGenerator {
         Level level = player.level();
         BlockState state = level.getBlockState(footPos);
         if (!shouldLeaveFootprint(state)) {
-            Library.LOGGER.info("Footprint: block %s doesn't support footprints", state.getBlock());
             return;
         }
 
@@ -288,18 +274,12 @@ public class FootstepGenerator {
         double blockY = getBlockTopY(level, state, footPos, entityY);
         double footY = Math.max(entityY, blockY);
 
-        Library.LOGGER.info("Footprint: entityY=%.3f, blockY=%.3f, footY=%.3f", entityY, blockY, footY);
-
         // Create footprint data
         Vec3 footLocation = new Vec3(footX, footY, footZ);
         Footprint print = Footprint.produce(style, player, footLocation, rotation, 1.0F, rightFoot);
 
-        Library.LOGGER.info("Footprint: Spawning footprint at %.2f, %.2f, %.2f", footX, footY, footZ);
-
         // Spawn footprint particle
         spawnFootprintParticle(print);
-
-        Library.LOGGER.info("Footprint: generateFootprint COMPLETE");
     }
 
     /**
@@ -339,21 +319,15 @@ public class FootstepGenerator {
      * Spawn a footprint particle in the world
      */
     private void spawnFootprintParticle(@NotNull Footprint print) {
-        Library.LOGGER.info("Footprint: spawnFootprintParticle START");
-
         Vec3 loc = print.getStepLocation();
         if (loc == null) {
-            Library.LOGGER.info("Footprint: step location is null");
             return;
         }
 
         var level = Minecraft.getInstance().level;
         if (level == null) {
-            Library.LOGGER.info("Footprint: level is null");
             return;
         }
-
-        Library.LOGGER.info("Footprint: Creating FootprintParticle at %.2f, %.2f, %.2f", loc.x, loc.y, loc.z);
 
         FootprintParticle particle = new FootprintParticle(
             print.getStyle(),
@@ -366,9 +340,7 @@ public class FootstepGenerator {
             print.isRightFoot()
         );
 
-        Library.LOGGER.info("Footprint: Adding particle to engine");
         Minecraft.getInstance().particleEngine.add(particle);
-        Library.LOGGER.info("Footprint: Particle added successfully");
     }
 
     /**

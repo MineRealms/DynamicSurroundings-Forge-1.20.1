@@ -283,7 +283,7 @@ public class Configuration extends ConfigurationData {
 
         @Property
         @Comment("Enable/disable footprint visual effects")
-        public boolean enableFootprints = true;
+        public boolean enableFootprints = false;
 
         @Property
         @Slider

@@ -16,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LocalPlayer.class)
 public class MixinLocalPlayerFootsteps {
 
-    private static boolean loggedOnce = false;
-
     /**
      * Hook into the move method to detect player movement and trigger footstep sounds
      */
@@ -25,17 +23,10 @@ public class MixinLocalPlayerFootsteps {
     private void dsurround_onMove(MoverType type, Vec3 movement, CallbackInfo ci) {
         try {
             LocalPlayer player = (LocalPlayer) (Object) this;
-            if (!loggedOnce) {
-                Library.LOGGER.info("Footprint: MixinLocalPlayerFootsteps.dsurround_onMove called!");
-                loggedOnce = true;
-            }
-            Library.LOGGER.info("Footprint: About to call FootstepGenerator.getInstance()");
             FootstepGenerator generator = FootstepGenerator.getInstance();
-            Library.LOGGER.info("Footprint: Got generator instance, calling onPlayerMove");
             generator.onPlayerMove(player, movement);
-            Library.LOGGER.info("Footprint: onPlayerMove completed");
         } catch (Exception e) {
-            Library.LOGGER.error(e, "Footprint: Exception in dsurround_onMove");
+            Library.LOGGER.error(e, "Exception in footstep movement handler");
         }
     }
 
