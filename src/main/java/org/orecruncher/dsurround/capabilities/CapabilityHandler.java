@@ -41,10 +41,6 @@ import org.orecruncher.dsurround.capabilities.dimension.DimensionInfo;
 import org.orecruncher.dsurround.capabilities.dimension.IDimensionInfo;
 import org.orecruncher.dsurround.capabilities.entitydata.EntityData;
 import org.orecruncher.dsurround.capabilities.entitydata.IEntityData;
-import org.orecruncher.dsurround.capabilities.entityfx.EntityFXData;
-import org.orecruncher.dsurround.capabilities.entityfx.IEntityFX;
-import org.orecruncher.dsurround.capabilities.season.ISeasonInfo;
-import org.orecruncher.dsurround.capabilities.season.SeasonInfo;
 import org.orecruncher.dsurround.lib.logging.ModLog;
 
 import javax.annotation.Nonnull;
@@ -53,26 +49,23 @@ import javax.annotation.Nullable;
 /**
  * Central registry for all Dynamic Surroundings capabilities.
  * Handles registration and attachment of capabilities to entities and levels.
+ * Note: Client-only capabilities (SeasonInfo, EntityFX) are handled by ClientCapabilityHandler.
  */
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CapabilityHandler {
 
     private static final ModLog LOGGER = new ModLog(Constants.MOD_ID);
 
-    // Capability instances
+    // Capability instances - common (both client and server)
     public static final Capability<IDimensionInfo> DIMENSION_INFO = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<ISeasonInfo> SEASON_INFO = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IEntityData> ENTITY_DATA = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IEntityFX> ENTITY_FX = CapabilityManager.get(new CapabilityToken<>() {});
 
     // Resource locations for capability IDs
     private static final ResourceLocation DIMENSION_INFO_ID = new ResourceLocation(Constants.MOD_ID, "dimension_info");
-    private static final ResourceLocation SEASON_INFO_ID = new ResourceLocation(Constants.MOD_ID, "season_info");
     private static final ResourceLocation ENTITY_DATA_ID = new ResourceLocation(Constants.MOD_ID, "entity_data");
-    private static final ResourceLocation ENTITY_FX_ID = new ResourceLocation(Constants.MOD_ID, "entity_fx");
 
     /**
-     * Attach capabilities to Level (dimension info and season info).
+     * Attach capabilities to Level (dimension info only - server side).
      */
     @SubscribeEvent
     public static void attachLevelCapabilities(AttachCapabilitiesEvent<Level> event) {
@@ -82,15 +75,11 @@ public class CapabilityHandler {
         DimensionInfo dimInfo = new DimensionInfo(level);
         event.addCapability(DIMENSION_INFO_ID, new DimensionInfoProvider(dimInfo));
 
-        // Attach SeasonInfo (client only)
-        if (level.isClientSide) {
-            SeasonInfo seasonInfo = SeasonInfo.factory(level);
-            event.addCapability(SEASON_INFO_ID, new SeasonInfoProvider(seasonInfo));
-        }
+        LOGGER.debug("Attached dimension info capability to level {}", level.dimension().location());
     }
 
     /**
-     * Attach capabilities to Entity (entity data and entity FX).
+     * Attach capabilities to Entity (entity data only - server side).
      */
     @SubscribeEvent
     public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
@@ -100,12 +89,7 @@ public class CapabilityHandler {
         if (entity instanceof Mob mob) {
             EntityData entityData = new EntityData(mob);
             event.addCapability(ENTITY_DATA_ID, new EntityDataProvider(entityData));
-        }
-
-        // Attach EntityFX to all living entities (client only)
-        if (entity.level().isClientSide && entity instanceof net.minecraft.world.entity.LivingEntity) {
-            EntityFXData entityFX = new EntityFXData();
-            event.addCapability(ENTITY_FX_ID, new EntityFXProvider(entityFX));
+            LOGGER.debug("Attached entity data capability to entity {}", entity.getName().getString());
         }
     }
 
@@ -143,25 +127,6 @@ public class CapabilityHandler {
     }
 
     /**
-     * Provider for SeasonInfo capability (no serialization needed).
-     */
-    private static class SeasonInfoProvider implements ICapabilityProvider {
-        private final SeasonInfo instance;
-        private final LazyOptional<ISeasonInfo> holder;
-
-        public SeasonInfoProvider(SeasonInfo instance) {
-            this.instance = instance;
-            this.holder = LazyOptional.of(() -> instance);
-        }
-
-        @Nonnull
-        @Override
-        public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-            return SEASON_INFO.orEmpty(cap, holder);
-        }
-    }
-
-    /**
      * Provider for EntityData capability.
      */
     private static class EntityDataProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
@@ -190,25 +155,6 @@ public class CapabilityHandler {
         }
     }
 
-    /**
-     * Provider for EntityFX capability (no serialization needed).
-     */
-    private static class EntityFXProvider implements ICapabilityProvider {
-        private final EntityFXData instance;
-        private final LazyOptional<IEntityFX> holder;
-
-        public EntityFXProvider(EntityFXData instance) {
-            this.instance = instance;
-            this.holder = LazyOptional.of(() -> instance);
-        }
-
-        @Nonnull
-        @Override
-        public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-            return ENTITY_FX.orEmpty(cap, holder);
-        }
-    }
-
     // ===================================
     // Helper methods to get capabilities
     // ===================================
@@ -222,26 +168,10 @@ public class CapabilityHandler {
     }
 
     /**
-     * Gets the SeasonInfo capability from a level.
-     */
-    @Nullable
-    public static ISeasonInfo getSeasonInfo(@Nonnull Level level) {
-        return level.getCapability(SEASON_INFO).orElse(null);
-    }
-
-    /**
      * Gets the EntityData capability from an entity.
      */
     @Nullable
     public static IEntityData getEntityData(@Nonnull Entity entity) {
         return entity.getCapability(ENTITY_DATA).orElse(null);
-    }
-
-    /**
-     * Gets the EntityFX capability from an entity.
-     */
-    @Nullable
-    public static IEntityFX getEntityFX(@Nonnull Entity entity) {
-        return entity.getCapability(ENTITY_FX).orElse(null);
     }
 }

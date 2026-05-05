@@ -31,6 +31,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.orecruncher.dsurround.Configuration;
 import org.orecruncher.dsurround.lib.GameUtils;
 import org.orecruncher.dsurround.lib.di.ContainerManager;
@@ -41,6 +43,7 @@ import org.orecruncher.dsurround.weather.Weather;
  * Manages thunder effects including sound playback and lightning flashes.
  * Handles both background ambient thunder and position-specific thunder events.
  */
+@OnlyIn(Dist.CLIENT)
 public class ThunderManager {
 
     private static final float THUNDER_VOLUME_MIN = 10000.0F;

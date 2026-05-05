@@ -1,6 +1,8 @@
 package org.orecruncher.dsurround.runtime;
 
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.orecruncher.dsurround.lib.GameUtils;
 import org.orecruncher.dsurround.lib.di.ContainerManager;
 import org.orecruncher.dsurround.lib.events.HandlerPriority;
@@ -12,6 +14,7 @@ import org.orecruncher.dsurround.runtime.sets.impl.*;
 
 import java.util.Optional;
 
+@OnlyIn(Dist.CLIENT)
 public final class ConditionEvaluator implements IConditionEvaluator {
 
     private final ExecutionContext context;

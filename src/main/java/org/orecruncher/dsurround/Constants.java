@@ -23,7 +23,7 @@ public final class Constants {
      * This will log additional information about mod operations, errors, and state changes.
      * WARNING: Debug mode can generate a lot of log output. Use only for troubleshooting.
      */
-    public static final boolean DEBUG_MODE = true;
+    public static final boolean DEBUG_MODE = false;
 
     /**
      * ID's of mods that Dynamic Surroundings has an interest for disabling certain features.

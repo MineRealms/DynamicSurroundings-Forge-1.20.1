@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
@@ -157,7 +158,8 @@ public class ForgeServiceImpl implements IPlatform {
         }
     }
 
-    // Forge event bus handler for game events
+    // Forge event bus handler for game events (client only)
+    @OnlyIn(Dist.CLIENT)
     public static class ForgeEventHandler {
         private final ForgeServiceImpl platform;
 

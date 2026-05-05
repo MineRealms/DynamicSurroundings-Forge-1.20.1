@@ -42,6 +42,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Matrix4f;
 import org.orecruncher.dsurround.capabilities.CapabilityHandler;
+import org.orecruncher.dsurround.capabilities.ClientCapabilityHandler;
 import org.orecruncher.dsurround.capabilities.season.ISeasonInfo;
 import org.orecruncher.dsurround.capabilities.season.PrecipitationType;
 import org.orecruncher.dsurround.weather.Weather;
@@ -116,7 +117,7 @@ public class StormRenderer {
 
         // Get current weather properties
         Weather.Properties weatherProps = Weather.getWeatherProperties();
-        ISeasonInfo seasonInfo = CapabilityHandler.getSeasonInfo(level);
+        ISeasonInfo seasonInfo = ClientCapabilityHandler.getSeasonInfo(level);
 
         // Render weather particles in a grid around the player
         int renderCount = ticks;

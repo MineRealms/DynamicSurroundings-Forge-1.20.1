@@ -36,6 +36,7 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.orecruncher.dsurround.capabilities.CapabilityHandler;
+import org.orecruncher.dsurround.capabilities.ClientCapabilityHandler;
 import org.orecruncher.dsurround.capabilities.dimension.IDimensionInfo;
 import org.orecruncher.dsurround.capabilities.season.ISeasonInfo;
 import org.orecruncher.dsurround.capabilities.season.TemperatureRating;
@@ -261,7 +262,7 @@ public class EnvironStateHandler extends EffectHandlerBase {
         data.playerPosition = player.blockPosition();
 
         // Get season info for temperature
-        ISeasonInfo seasonInfo = CapabilityHandler.getSeasonInfo(world);
+        ISeasonInfo seasonInfo = ClientCapabilityHandler.getSeasonInfo(world);
         if (seasonInfo != null) {
             data.playerTemperature = seasonInfo.getPlayerTemperature();
             data.biomeTemperature = seasonInfo.getBiomeTemperature(data.playerPosition);

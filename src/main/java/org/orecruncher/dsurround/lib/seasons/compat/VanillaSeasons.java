@@ -19,12 +19,12 @@ public class VanillaSeasons extends AbstractSeasonProvider {
 
     @Override
     public Optional<String> getCurrentSeason(Level world) {
-        return Optional.of(this.currentSeasonString);
+        return Optional.ofNullable(this.currentSeasonString);
     }
 
     @Override
     public Optional<String> getCurrentSeasonTranslated(Level world) {
-        return Optional.of(this.currentSeasonString);
+        return Optional.ofNullable(this.currentSeasonString);
     }
 
     @Override
