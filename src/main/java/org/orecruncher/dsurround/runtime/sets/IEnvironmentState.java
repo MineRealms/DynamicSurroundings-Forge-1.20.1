@@ -7,4 +7,6 @@ public interface IEnvironmentState {
     boolean isInside();
 
     boolean isUnderWater();
+
+    boolean hasBlockNearby(String blockId, int range);
 }

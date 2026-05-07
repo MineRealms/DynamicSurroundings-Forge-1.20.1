@@ -295,5 +295,105 @@
       "min": 0.6,
       "max": 1.2
     }
+  },
+  {
+    "location": "spore:area_ambient",
+    "soundEvent": "spore:spore_area_ambient",
+    "category": "AMBIENT",
+    "volume": 0.6,
+    "pitch": {
+      "min": 0.9,
+      "max": 1.1
+    },
+    "isRepeatable": true,
+    "repeatDelay": 400
+  },
+  {
+    "location": "spore:madness_whispers",
+    "soundEvent": "spore:madness",
+    "category": "AMBIENT",
+    "volume": 0.4,
+    "pitch": {
+      "min": 0.8,
+      "max": 1.0
+    },
+    "isRepeatable": true,
+    "repeatDelay": 600
+  },
+  {
+    "location": "spore:infected_growl",
+    "soundEvent": "spore:inf_growl",
+    "category": "AMBIENT",
+    "volume": 0.5,
+    "pitch": {
+      "min": 0.85,
+      "max": 1.15
+    }
+  },
+  {
+    "location": "spore:proto_ambient",
+    "soundEvent": "spore:proto_ambient",
+    "category": "AMBIENT",
+    "volume": 0.7,
+    "pitch": {
+      "min": 0.9,
+      "max": 1.1
+    },
+    "isRepeatable": true,
+    "repeatDelay": 200
+  },
+  {
+    "location": "spore:heart_beat",
+    "soundEvent": "spore:heart_beat",
+    "category": "AMBIENT",
+    "volume": 0.5,
+    "pitch": {
+      "min": 0.9,
+      "max": 1.1
+    },
+    "isRepeatable": true,
+    "repeatDelay": 100
+  },
+  {
+    "location": "spore:reaper_ambient",
+    "soundEvent": "spore:reaper_ambient",
+    "category": "AMBIENT",
+    "volume": 0.5,
+    "pitch": {
+      "min": 0.85,
+      "max": 1.15
+    }
+  },
+  {
+    "location": "spore:vanguard_ambient",
+    "soundEvent": "spore:vanguard_ambient",
+    "category": "AMBIENT",
+    "volume": 0.5,
+    "pitch": {
+      "min": 0.9,
+      "max": 1.1
+    },
+    "isRepeatable": true,
+    "repeatDelay": 300
+  },
+  {
+    "location": "spore:broken_screams",
+    "soundEvent": "spore:broken_screams",
+    "category": "AMBIENT",
+    "volume": 0.4,
+    "pitch": {
+      "min": 0.8,
+      "max": 1.0
+    }
+  },
+  {
+    "location": "spore:fungal_burst",
+    "soundEvent": "spore:fungal_burst",
+    "category": "AMBIENT",
+    "volume": 0.6,
+    "pitch": {
+      "min": 0.9,
+      "max": 1.1
+    }
   }
 ]

@@ -489,5 +489,31 @@
         "type": "addition"
       }
     ]
+  },
+  {
+    "biomeSelector": "true",
+    "_comment": "Spore compatibility - play area ambient when near fungal blocks",
+    "priority": 200,
+    "acoustics": [
+      {
+        "factory": "spore:area_ambient",
+        "conditions": "lib.isModLoaded('spore') && state.hasBlockNearby('spore:fungal_blocks', 5)",
+        "type": "mood",
+        "weight": 100
+      }
+    ]
+  },
+  {
+    "biomeSelector": "true",
+    "_comment": "Spore madness whispers - plays at night when near infected areas",
+    "priority": 150,
+    "acoustics": [
+      {
+        "factory": "spore:madness_whispers",
+        "conditions": "lib.isModLoaded('spore') && diurnal.isNight() && state.hasBlockNearby('spore:fungal_blocks', 10)",
+        "type": "mood",
+        "weight": 50
+      }
+    ]
   }
 ]
