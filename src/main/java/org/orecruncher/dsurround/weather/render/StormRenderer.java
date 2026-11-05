@@ -115,6 +115,13 @@ public class StormRenderer {
         RenderSystem.enableDepthTest();
         RenderSystem.depthMask(Minecraft.useShaderTransparency());
 
+        // The particle shader multiplies by the lightmap on texture unit 2. Vanilla
+        // turns that layer off at the end of renderSnowAndRain(), which runs before
+        // AFTER_WEATHER, so Sampler2 would be unbound and the rain would render black.
+        LightTexture lightTexture = mc.gameRenderer.lightTexture();
+        lightTexture.turnOnLightLayer();
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+
         // Get current weather properties
         Weather.Properties weatherProps = Weather.getWeatherProperties();
         ISeasonInfo seasonInfo = ClientCapabilityHandler.getSeasonInfo(level);
@@ -280,5 +287,6 @@ public class StormRenderer {
         // Restore rendering state
         RenderSystem.enableCull();
         RenderSystem.disableBlend();
+        lightTexture.turnOffLightLayer();
     }
 }
