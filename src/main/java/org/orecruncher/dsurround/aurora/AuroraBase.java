@@ -25,10 +25,7 @@
 package org.orecruncher.dsurround.aurora;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.orecruncher.dsurround.lib.random.IRandomizer;
@@ -127,22 +124,18 @@ public abstract class AuroraBase implements IAurora {
     }
 
     /**
-     * Translate the aurora to maintain fixed offset relative to player.
-     * The aurora should appear as a distant sky effect that doesn't move with camera rotation.
+     * Place the aurora at a fixed offset from the camera, matching the 1.12 original.
+     * During the level render pass positions are already camera-relative and the camera
+     * rotation comes from RenderSystem's ModelViewMat, so subtracting the camera's world
+     * position here would offset the sky by thousands of blocks.
      *
-     * @param poseStack The pose stack for transformations
+     * @param poseStack The pose stack for local transformations
      */
     protected void translate(PoseStack poseStack) {
-        // Get camera position to cancel out world translation
-        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-        Vec3 cameraPos = camera.getPosition();
-
-        // Cancel out the camera's world position so aurora stays fixed relative to player
-        // Then apply fixed offsets for aurora positioning
         poseStack.translate(
-            -cameraPos.x,  // Cancel X movement
-            AuroraUtils.PLAYER_FIXED_Y_OFFSET - cameraPos.y,  // Fixed height, cancel Y movement
-            AuroraUtils.PLAYER_FIXED_Z_OFFSET - cameraPos.z   // Fixed distance, cancel Z movement
+            0.0D,
+            AuroraUtils.PLAYER_FIXED_Y_OFFSET,
+            (double) -AuroraUtils.PLAYER_FIXED_Z_OFFSET
         );
     }
 

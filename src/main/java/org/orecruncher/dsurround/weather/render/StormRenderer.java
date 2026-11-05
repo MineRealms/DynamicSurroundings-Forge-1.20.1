@@ -40,7 +40,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
 import org.orecruncher.dsurround.capabilities.CapabilityHandler;
 import org.orecruncher.dsurround.capabilities.ClientCapabilityHandler;
 import org.orecruncher.dsurround.capabilities.season.ISeasonInfo;
@@ -82,9 +81,8 @@ public class StormRenderer {
      * @param ticks Current render ticks
      * @param partialTick Partial tick for smooth interpolation
      * @param camera The camera position
-     * @param poseStack The pose stack for transformations
      */
-    public void render(ClientLevel level, int ticks, float partialTick, Camera camera, PoseStack poseStack) {
+    public void render(ClientLevel level, int ticks, float partialTick, Camera camera) {
         // Check if weather should be rendered
         float rainStrength = Weather.getIntensityLevel();
         if (rainStrength <= 0.0F) {
@@ -241,10 +239,11 @@ public class StormRenderer {
                     isBuilding = true;
                 }
 
-                // Render the weather particle quad
-                Matrix4f matrix = poseStack.last().pose();
-
-                // Calculate world positions relative to camera
+                // Calculate world positions relative to camera. Vanilla weather submits
+                // these directly with vertex(DDD): the camera rotation already lives in
+                // RenderSystem's ModelViewMat, so multiplying by the event PoseStack here
+                // would apply the camera rotation a second time and make rain swing with
+                // the cursor.
                 double x0 = gridX - rainX + 0.5D - cameraX;
                 double x1 = gridX + rainX + 0.5D - cameraX;
                 double z0 = gridZ - rainY + 0.5D - cameraZ;
@@ -253,25 +252,25 @@ public class StormRenderer {
                 double y1 = maxY - cameraY;
 
                 // Add vertices for the quad
-                bufferBuilder.vertex(matrix, (float) x0, (float) y0, (float) z0)
+                bufferBuilder.vertex(x0, y0, z0)
                         .uv((float) texOffsetU, (float) (y0 * 0.25D + texOffsetV))
                         .color(red, green, blue, alpha)
                         .uv2(packedLight)
                         .endVertex();
 
-                bufferBuilder.vertex(matrix, (float) x1, (float) y0, (float) z1)
+                bufferBuilder.vertex(x1, y0, z1)
                         .uv((float) (1.0D + texOffsetU), (float) (y0 * 0.25D + texOffsetV))
                         .color(red, green, blue, alpha)
                         .uv2(packedLight)
                         .endVertex();
 
-                bufferBuilder.vertex(matrix, (float) x1, (float) y1, (float) z1)
+                bufferBuilder.vertex(x1, y1, z1)
                         .uv((float) (1.0D + texOffsetU), (float) (y1 * 0.25D + texOffsetV))
                         .color(red, green, blue, alpha)
                         .uv2(packedLight)
                         .endVertex();
 
-                bufferBuilder.vertex(matrix, (float) x0, (float) y1, (float) z0)
+                bufferBuilder.vertex(x0, y1, z0)
                         .uv((float) texOffsetU, (float) (y1 * 0.25D + texOffsetV))
                         .color(red, green, blue, alpha)
                         .uv2(packedLight)

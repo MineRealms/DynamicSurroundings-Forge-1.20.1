@@ -24,7 +24,6 @@
 
 package org.orecruncher.dsurround.weather.render;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -68,20 +67,16 @@ public class WeatherRenderHandler {
         }
 
         // Get render context
-        PoseStack poseStack = event.getPoseStack();
         Camera camera = event.getCamera();
         float partialTick = event.getPartialTick();
 
         // Increment render ticks
         renderTicks++;
 
-        // Render our custom weather
-        poseStack.pushPose();
-        try {
-            stormRenderer.render(level, renderTicks, partialTick, camera, poseStack);
-        } finally {
-            poseStack.popPose();
-        }
+        // Render our custom weather. The event PoseStack already carries the camera
+        // rotation, and RenderSystem's ModelViewMat carries it too; letting the renderer
+        // use that matrix applies the rotation twice.
+        stormRenderer.render(level, renderTicks, partialTick, camera);
     }
 
     /**

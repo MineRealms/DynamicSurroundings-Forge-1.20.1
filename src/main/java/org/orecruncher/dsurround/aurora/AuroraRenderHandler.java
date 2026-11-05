@@ -57,7 +57,11 @@ public class AuroraRenderHandler {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_WEATHER) {
             AuroraEffectHandler handler = EffectManager.instance().lookupService(AuroraEffectHandler.class);
             if (handler != null) {
-                PoseStack poseStack = event.getPoseStack();
+                // Use a clean stack for the aurora's local transforms. The event PoseStack
+                // already holds the camera rotation, which RenderSystem's ModelViewMat also
+                // holds - passing it here would rotate the aurora twice and make it sweep
+                // across the screen whenever the player turns.
+                PoseStack poseStack = new PoseStack();
                 float partialTick = event.getPartialTick();
                 handler.render(poseStack, partialTick);
             }
