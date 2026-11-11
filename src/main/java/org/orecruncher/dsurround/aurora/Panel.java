@@ -28,8 +28,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /**
- * Represents a single panel/node in an aurora band.
- * Each panel has a position, texture coordinates, and alpha value.
+ * A single node of an aurora band, matching the 1.12.2 Panel.
+ * The band is a ribbon meandering in the XZ plane; each node carries a vertical
+ * curtain whose height is posY. The travelling wave is applied to dZ (horizontal
+ * sway), NOT to the curtain height - putting it on Y produces a row of sine-wave
+ * columns instead of an aurora.
  */
 @OnlyIn(Dist.CLIENT)
 public class Panel {
@@ -49,22 +52,61 @@ public class Panel {
 
     public float alpha;
 
+    /** Heading of this node along the ribbon, in degrees. */
+    public double angle;
+
+    /** Per-frame travelling wave offsets. */
+    public double dZ;
+    public double dY;
+
+    private double sinDeg90;
+    private double sinDeg270;
+
     /**
      * Create a new panel with default values.
      */
     public Panel() {
-        this.posX = 0.0;
-        this.posY = 0.0;
-        this.posZ = 0.0;
-        this.tetX = 0.0;
-        this.tetY = 0.0;
-        this.tetZ = 0.0;
-        this.tetX2 = 0.0;
-        this.tetY2 = 0.0;
-        this.tetZ2 = 0.0;
-        this.u = 0.0F;
-        this.v = 0.0F;
         this.alpha = 1.0F;
+    }
+
+    /** Curtain height with the wave applied, clamped so it never goes below the horizon. */
+    public double getModdedY() {
+        final double y = this.posY + this.dY;
+        return y < 0.0D ? 0.0D : y;
+    }
+
+    /** Z position with the horizontal sway applied. */
+    public double getModdedZ() {
+        return this.posZ + this.dZ;
+    }
+
+    public void setDeltaZ(double f) {
+        this.dZ = f;
+    }
+
+    public void setDeltaY(double f) {
+        this.dY = f;
+    }
+
+    /**
+     * Set the half-width of the curtain. cos(90) and cos(270) are 0, so both
+     * tetrahedral X edges stay on posX; sin(90)=1 and sin(270)=-1 give the two
+     * Z edges. Mirrors 1.12.2 Panel.setWidth().
+     */
+    public void setWidth(double w) {
+        this.sinDeg90 = w;
+        this.sinDeg270 = -w;
+        this.tetX = this.posX;
+        this.tetX2 = this.posX;
+    }
+
+    /** Apply the current wave and width to the tetrahedral edge coordinates. */
+    public void applyThickness() {
+        final double mZ = getModdedZ();
+        this.tetZ = mZ + this.sinDeg90;
+        this.tetZ2 = mZ + this.sinDeg270;
+        this.tetY = getModdedY();
+        this.tetY2 = this.tetY;
     }
 
     /**
